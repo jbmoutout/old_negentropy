@@ -13,26 +13,14 @@
       <% if user_signed_in? %>
 
       <%= image_tag current_user.image, class: "img-avatar" %>
-      <%= current_user.name %> <br>
-      <%= link_to "log out", user_omniauth_authorize_path(:twitter) %>
+      <%= current_user.name %>
       <% else %>
        <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
       <% end %>
 
+      <%= user.timeline[0..4] %>
 
 
-      <h2>This is the homepage</h2>
-
-      <p>
-        Find me in <code>app/views/pages/home.html.erb</code>
-      </p>
-
-      <p>
-        Thanks to the <a href="https://github.com/thoughtbot/high_voltage">high_voltage</a>
-        gem, if you need more static pages (like <code>/contact</code> or <code>/about-us</code>),
-        just create a file in the <code>app/views/pages</code> folder, the route will be automatically
-        available without you adding any controller or touching the <code>config/routes.rb</code> file!
-      </p>
     </div>
   </div>
 </div>
