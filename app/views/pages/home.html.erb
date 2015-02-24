@@ -10,6 +10,16 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
       <h1>Welcome!</h1>
+      <% if user_signed_in? %>
+
+      <%= image_tag current_user.image, class: "img-avatar" %>
+      <%= current_user.name %> <br>
+      <%= link_to "log out", user_omniauth_authorize_path(:twitter) %>
+      <% else %>
+       <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
+      <% end %>
+
+
 
       <h2>This is the homepage</h2>
 
