@@ -23,5 +23,3 @@ end
   #   permitted
   # end
 
-
-end
