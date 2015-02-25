@@ -1,5 +1,6 @@
 def authenticate_admin!
-  redirect_to new_user_session_path unless current_user.try(:admin?)
+  # redirect_to new_user_session_path unless current_user.try(:admin?)
+  redirect_to users_index_path unless current_user.try(:admin?)
 end
 
 ActiveAdmin.setup do |config|
