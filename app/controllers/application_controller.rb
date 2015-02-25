@@ -9,12 +9,10 @@ class ApplicationController < ActionController::Base
     end
 
   include Pundit
-  after_action :verify_authorized, except: :index, unless: :devise_or_pages_controller?
-  after_action :verify_policy_scoped, only: :index, unless: :devise_or_pages_controller?
+  after_action :verify_authorized, except: :index, unless: :devise_or_pages_or_admin_controller?
+  after_action :verify_policy_scoped, only: :index, unless: :devise_or_pages_or_admin_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
-
 
   private
 
@@ -23,8 +21,12 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
-  def devise_or_pages_controller?
-    devise_controller? || pages_controller?
+  def devise_or_pages_or_admin_controller?
+    devise_controller? || pages_controller? || admin_controller?
+  end
+
+  def admin_controller?
+    controller_path.start_with?('admin/')
   end
 
   def pages_controller?
