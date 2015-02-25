@@ -1,5 +1,5 @@
 
-<h1>NonPrintingCharacter</h1>
+<h2>Negentropy</h2>
 
 <div class="container">
 
@@ -12,7 +12,7 @@
   <div class="row">
       <div class="col-xs-1">
 
-              <img src="<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:profile_image_url] %>">
+              <img src="<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:profile_image_url_original] %>">
           </div>
           <div class="col-xs-9">
 
