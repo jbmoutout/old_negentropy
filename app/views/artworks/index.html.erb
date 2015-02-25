@@ -1,41 +1,48 @@
 
 <h1>NonPrintingCharacter</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
-      <ul class="list-unstyled">
+<div class="container">
+
+
       <% @answered_ids = [] %>
       <% @tweets[:timeline].each do |tweet| %>
-        <li> 
+
             <% if @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.size != 0 %>
 
-          <div class="container">
-            <div class="row">
+  <div class="row">
+      <div class="col-xs-1">
 
               <img src="<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:profile_image_url] %>">
+          </div>
+          <div class="col-xs-9">
 
               <p><strong><%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:name] %></strong></p>
 
               <p><%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.text %></p>
 
-            </div>
-          </div>
-
+      </div>
+ </div>
           <% end %>
-
+   <div class="row">
+      <div class="col-xs-9">
           <% if tweet.attrs[:entities][:media] %>
            <div> <img src="<%= tweet.attrs[:entities][:media][0][:media_url] %>"></div> 
           <% end %>
           <br>
-          <div><%= tweet.text %></div>
-          <%# tweet.in_reply_to_status_id %>
+      </div>
+    </div>
 
-        </li>
+    <div class="row">
+       <div class="col-xs-9">
+          <%= tweet.text %>
+        </div>
+    </div>
 
       <% end %>
-      </ul>
-    </div>
+
+
   </div>
 </div>
+
+
 
