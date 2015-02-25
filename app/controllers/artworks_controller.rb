@@ -3,7 +3,6 @@ class ArtworksController < ApplicationController
 
 
   def new
-
   end
 
   def create
@@ -19,7 +18,7 @@ class ArtworksController < ApplicationController
   end
 
   def index
-    @tweets = @client.user_timeline("nonprintingc")
+    @tweets = policy_scope(Artwork)
   end
 
   def show
