@@ -1,6 +1,15 @@
 
 <h1>Artworks#index</h1>
-
+<ul class="list-unstyled">
 <% @tweets.each do |tweet| %>
-  <%= tweet.text %>
+  <li> 
+    <%# tweet.in_reply_to_status_id %>
+    <% if tweet.attrs[:entities][:media] %>
+      <img src="<%= tweet.attrs[:entities][:media][0][:media_url] %>"> 
+    <% end %>
+    <br>
+    <%= tweet.text %>
+
+  </li>
 <% end %>
+</ul>
