@@ -1,4 +1,6 @@
 
 <h1>Artworks#index</h1>
 
-    <%= tweets[0].text %>
+<% @tweets.each do |tweet| %>
+  <%= tweet.text %>
+<% end %>
