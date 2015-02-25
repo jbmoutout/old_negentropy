@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.name = auth.info.name
       user.image = auth.info.image
-      user.access_token = auth.credentials.token
+      user.token = auth.credentials.token
+      user.secret = auth.credentials.secret
     end
   end
 end
