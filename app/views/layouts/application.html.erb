@@ -13,6 +13,18 @@
 <body>
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
+  <%= render 'layouts/navside' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h1>
+        <%= link_to "Negentropy", home_path %>
+      </h1>
+    </div>
+  </div>
+</div>
+
 
   <%= yield %>
 
