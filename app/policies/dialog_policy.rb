@@ -1,4 +1,4 @@
-class TweetPolicy < ApplicationPolicy
+class DialogPolicy < ApplicationPolicy
   def index?
     true
   end

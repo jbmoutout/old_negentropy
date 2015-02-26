@@ -1,4 +1,4 @@
-class TweetsController < ApplicationController
+class DialogsController < ApplicationController
 
   def new
 
@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweets = policy_scope(Tweet)
+    @dialogs = policy_scope(Dialog)
     @user = current_user
   end
 

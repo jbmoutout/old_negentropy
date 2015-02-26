@@ -15,6 +15,7 @@ class CreateDialogFromTweetRunner
       img_url: @tweet.attrs[:entities][:media][0][:media_url],
       origin_user: original_tweet.attrs[:user][:name],
       origin_screen_name: original_tweet.attrs[:user][:screen_name],
+      origin_profilpic_url: original_tweet.attrs[:user][:profile_image_url],
       origin_text: original_tweet.text,
       origin_date: original_tweet.created_at
     })

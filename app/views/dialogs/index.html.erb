@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <% @dialogs.each do |d| %>
+        <div class="stream-item">
+          <div class="row">
+            <div class="col-xs-1">
+              <img src="<%= d.origin_profilpic_url %>" class="img img-tweet">
+            </div>
+            <div class="col-xs-11">
+              <p><strong><%= d.origin_user %></strong>
+              @<%= d.origin_screen_name %>
+              <% if d.origin_date != nil %>
+              • <%= d.origin_date.to_date %></p>
+              <% end %>
+              <p><%= d.origin_text %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="img-tweet-box">
+                <img src="<%= d.img_url %>" class="img img-tweet"> 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <p>
+                <%= d.text %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
