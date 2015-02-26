@@ -51,6 +51,14 @@ outline-color: black;
   margin-top: 10px;
 }
 
+.alert-warning {
+  background-color: black;
+  border-color: black;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+}
+
 @media(min-width:768px) {
   .full-src {
     padding-right: 185px;
