@@ -12,9 +12,11 @@
       <% if user_signed_in? %>
         <%= image_tag current_user.image, class: "img-avatar" %>
         <%= current_user.name %>
+        <%= link_to 'Sign out', destroy_user_session_path, method:'delete', class: "btn btn-danger" %>
       <% else %>
         <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter), class: "btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>
 </div>
+
