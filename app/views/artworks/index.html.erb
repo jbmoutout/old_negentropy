@@ -1,44 +1,42 @@
+
 <div class="container">
-
-
-      <% @answered_ids = [] %>
-      <% @tweets[:timeline].each do |tweet| %>
-
-            <% if @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.size != 0 %>
-
+  <% @answered_ids = [] %>
   <div class="row">
-      <div class="col-xs-1">
+    <div class="col-xs-8 col-xs-offset-2">
+      <% @tweets[:timeline].each do |tweet| %>
+        <div class="stream-item">
+          <% if @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.size != 0 %>
+            <div class="row">
+              <div class="col-xs-1">
+                <img src="<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:profile_image_url] %>" class="img img-tweet">
+              </div>
+              <div class="col-xs-11">
+                <p><strong><%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:name] %></strong></p>
+                <p><%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.text %></p>
+              </div>
+            </div>
+          <% end %>
 
-              <img src="<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:profile_image_url] %>">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="img-tweet-box">
+                <% if tweet.attrs[:entities][:media] %>
+                  <img src="<%= tweet.attrs[:entities][:media][0][:media_url] %>" class="img img-tweet"> 
+                <% end %>
+              </div>
+            </div>
           </div>
-          <div class="col-xs-9">
-
-              <p><strong><%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:name] %></strong>
-              @<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:screen_name] %> |
-              <%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.created_at.to_date %></p>
-              <p><%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.text %></p>
-
-
-      </div>
- </div>
-          <% end %>
-   <div class="row">
-      <div class="col-xs-9">
-          <% if tweet.attrs[:entities][:media] %>
-           <div> <img src="<%= tweet.attrs[:entities][:media][0][:media_url] %>"></div> 
-          <% end %>
-          <br>
-      </div>
-    </div>
-
-    <div class="row">
-       <div class="col-xs-9">
-          <%= tweet.text %>
+          <div class="row">
+            <div class="col-xs-12">
+              <p>
+                <%= tweet.text %>
+              </p>
+            </div>
+          </div>
         </div>
+        <% end %>
+      </div>
     </div>
-
-      <% end %>
-
   </div>
 </div>
 

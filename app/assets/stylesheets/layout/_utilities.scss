@@ -7,6 +7,9 @@
   padding-top: 8em;
   padding-bottom: 8em;
 }
+.padding1 {
+  padding: 2px;
+}
 .bg-red {
   background: $red;
   color: white;
@@ -30,4 +33,22 @@
 .bg-purple {
   background: $purple;
   color: white;
+}
+.border-bot {
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.stream-item {
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.img-tweet {
+  width: 100%;
+}
+.img-tweet-box {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
