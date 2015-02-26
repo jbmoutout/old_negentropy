@@ -13,10 +13,16 @@
         <%= image_tag current_user.image, class: "img-avatar" %>
         <%= current_user.name %>
         <%= link_to 'Sign out', destroy_user_session_path, method:'delete', class: "btn btn-danger" %>
+        <% if current_user.admin %>
+          <%= link_to "Voir l'admin", admin_root_path, class: "btn btn-danger" %>
+        <% end %>
       <% else %>
         <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter), class: "btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
 
