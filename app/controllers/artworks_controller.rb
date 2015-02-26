@@ -3,9 +3,11 @@ class ArtworksController < ApplicationController
 
 
   def new
+
   end
 
   def create
+
   end
 
   def update
@@ -22,5 +24,9 @@ class ArtworksController < ApplicationController
   end
 
   def show
+  end
+
+  def artwork_params
+  params.require(:artwork).permit(:name, :date, :description, :picture)
   end
 end
