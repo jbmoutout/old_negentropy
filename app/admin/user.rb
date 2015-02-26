@@ -6,7 +6,7 @@ ActiveAdmin.register User do
     column :name
     column :created_at
     column :admin
-    column :image
+    column :provider
     actions
   end
 

@@ -1,6 +1,8 @@
 ActiveAdmin.register Artwork do
   permit_params :name, :date, :artist_id, :description
 
+
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
