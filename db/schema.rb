@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150225113505) do
-=======
 ActiveRecord::Schema.define(version: 20150225141107) do
->>>>>>> f1dbd525233bca81d4d7048f18dee1799c5cf610
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,12 +68,9 @@ ActiveRecord::Schema.define(version: 20150225141107) do
     t.string   "image"
     t.string   "name"
     t.string   "email"
-<<<<<<< HEAD
     t.boolean  "admin",                  default: false, null: false
-=======
     t.string   "token"
     t.string   "secret"
->>>>>>> f1dbd525233bca81d4d7048f18dee1799c5cf610
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
