@@ -1,4 +1,4 @@
-class ArtworkPolicy < ApplicationPolicy
+class DialogPolicy < ApplicationPolicy
   def index?
     true
   end
@@ -12,4 +12,5 @@ class ArtworkPolicy < ApplicationPolicy
       scope.all
     end
   end
+
 end

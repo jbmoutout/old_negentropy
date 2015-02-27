@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225141107) do
+ActiveRecord::Schema.define(version: 20150226165455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,29 @@ ActiveRecord::Schema.define(version: 20150225141107) do
     t.date     "date"
     t.integer  "artist_id"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "artworks", ["artist_id"], name: "index_artworks_on_artist_id", using: :btree
+
+  create_table "dialogs", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "text"
+    t.date     "date"
+    t.string   "img_url"
+    t.string   "tweet_id"
+    t.string   "origin_profilpic_url"
+    t.string   "origin_user"
+    t.string   "origin_screen_name"
+    t.string   "origin_text"
+    t.string   "origin_date"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "encrypted_password",     default: "",    null: false
@@ -68,15 +86,9 @@ ActiveRecord::Schema.define(version: 20150225141107) do
     t.string   "image"
     t.string   "name"
     t.string   "email"
-<<<<<<< HEAD
-    t.boolean  "admin",                  default: false, null: false
-    t.string   "token"
-    t.string   "secret"
-=======
     t.string   "token"
     t.string   "secret"
     t.boolean  "admin",                  default: false, null: false
->>>>>>> 6f5df8d387868e8580b70c070cc420be3c594f0a
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

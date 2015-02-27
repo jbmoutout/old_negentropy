@@ -1,0 +1,12 @@
+
+<h2>SAVED</h2>
+<div >
+  <% @tweets.each do |tweet| %>
+<img src="<%= tweet.img_url %>"> <br>
+
+<%= tweet.text.match(/(?<=: )(.*?),/) %> <br>
+
+
+<% end %>
+
+</div> <br>
