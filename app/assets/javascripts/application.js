@@ -12,6 +12,13 @@
 var display_backtotop = 800; // Scrolled pixels from top until the link appears
 
 $(document).ready(function() {
+  $('.overlay').on('mouseenter', function() {
+        $(this).next().slideDown();
+      })
+
+      $('.img-tweet-box').on('mouseleave', function() {
+        $(this).children('a').slideUp();
+      });
   $(window).scroll(function() {
     if ($(this).scrollTop() > display_backtotop) {
       $(".scroll-top").fadeIn();
