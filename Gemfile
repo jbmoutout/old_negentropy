@@ -17,6 +17,8 @@ gem "pundit"
 gem "paperclip"
 gem "aws-sdk"
 
+gem 'acts_as_votable', '~> 0.10.0'
+
 gem "jquery-rails"
 gem "sass-rails", "~> 5.0"
 gem "uglifier"
