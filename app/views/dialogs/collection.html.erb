@@ -1,0 +1,22 @@
+<p><u>Collection</u></p>
+  Artists: <% @dialogs.each do |t| %>
+  <%= t.text.match(/(?<=: )(.*?),/) %>
+  <% end %>
+<% @dialogs.each do |d| %>
+        <div class="stream-item">
+          <div class="row">
+            <div class="col-xs-4">
+              <div class="img-tweet-box">
+                <img src="<%= d.img_url %>" class="img img-tweet"> 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <p>
+                <%= d.text %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
