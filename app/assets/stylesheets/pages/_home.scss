@@ -1,5 +1,6 @@
 body {
   font-family: $classic-font;
+  font-weight: 200;
   background-color: white;
 }
 
@@ -8,6 +9,8 @@ h1 {
   padding: 10px;
   margin: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: 300;
+  font-size: 30px;
 }
 
 .center-wos {
