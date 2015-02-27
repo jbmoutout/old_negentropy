@@ -6,15 +6,15 @@ $navbar-hover-color: rgba(255,255,255,1);
 $navbar-font-family: $navbar-font;
 $navbar-font-size: 14px;
 $navbar-text-transform: capitalize;
-$navbar-font-weight: 300;
-$navbar-letter-spacing: 1.5px;
+$navbar-font-weight: 100;
+$navbar-letter-spacing: 1.3px;
 $navbar-font-family: $navbar-font;
 $navbar-bg: black;
 
 /* -------------------------------------
  * Box model
  * ------------------------------------- */
-$navbar-height: 50px;
+$navbar-height: 30px;
 $navbar-vertical-padding: 5px;
 $navbar-horizontal-padding: 10px;
 $navbar-border-bottom-width: 1px;
@@ -46,6 +46,7 @@ $navbar-btn-radius: 2px;
   min-height: 0;
   transition: background 0.4s ease;
 
+
   .navbar-nav > li > a,
   .navbar-nav > .open > a,
   .navbar-nav > li > a:focus,
@@ -68,4 +69,9 @@ $navbar-btn-radius: 2px;
     background-color: $navbar-hover-color;
   }
 
+}
+
+.navbar-nav > li {
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
