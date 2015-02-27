@@ -13,8 +13,10 @@
       <ul class="nav navbar-nav">
         <li>
           <% if user_signed_in? %>
-          <%= image_tag current_user.image, class: "img-avatar" %>
-          <%= current_user.name %>
+          <div class="padding-bot">
+            <%= image_tag current_user.image, class: "img-avatar" %>
+            <%= current_user.name %>
+          </div>
           <% end %>
         </li>
         <li>
@@ -57,8 +59,10 @@
       <ul class="sidebar-nav">
           <li>
             <% if user_signed_in? %>
-            <%= image_tag current_user.image, class: "img-avatar" %>
-            <%= current_user.name %>
+            <div class="padding-bot">
+              <%= image_tag current_user.image, class: "img-avatar" %>
+              <%= current_user.name %>
+            </div>
             <% end %>
           </li>
           <li>
