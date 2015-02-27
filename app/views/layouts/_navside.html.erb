@@ -51,6 +51,7 @@
   <!-- Sidebar -->
   <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
+
           <li>
             <% if user_signed_in? %>
             <div class="padding-bot">
@@ -84,6 +85,7 @@
               <%= link_to "Log in", user_omniauth_authorize_path(:twitter)%>
             </li>
             <% end %>
+
       </ul>
   </div>
   <!-- /#sidebar-wrapper -->
