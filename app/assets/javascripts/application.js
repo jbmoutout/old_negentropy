@@ -9,7 +9,7 @@
 // app/assets/javascripts/app instead, and put your code there
 
 
-var display_backtotop = 300; // Scrolled pixels from top until the link appears
+var display_backtotop = 800; // Scrolled pixels from top until the link appears
 
 $(document).ready(function() {
   $(window).scroll(function() {
