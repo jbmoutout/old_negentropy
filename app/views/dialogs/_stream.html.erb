@@ -21,9 +21,8 @@
             <div class="col-xs-12">
               <div class="img-tweet-box">
                 <div class="overlay"></div>
-                <a href="#" class="button">Add</a>
+                <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
                 <img src="<%= d.img_url %>" class="img img-tweet"> 
-                <%= link_to "(+)", dialog_add_path(:dialog_id => d.id), method: :put %>
               </div>
             </div>
           </div>
