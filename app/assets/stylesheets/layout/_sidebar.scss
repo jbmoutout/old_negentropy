@@ -1,9 +1,9 @@
 #wrapper {
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    // -webkit-transition: all 0.5s ease;
+    // -moz-transition: all 0.5s ease;
+    // -o-transition: all 0.5s ease;
+    // transition: all 0.5s ease;
 }
 
 #wrapper.toggled {
@@ -19,10 +19,11 @@
     margin-right: -185px;
     overflow-y: auto;
     background: #000;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    font-weight: 150;
+    // -webkit-transition: all 0.5s ease;
+    // -moz-transition: all 0.5s ease;
+    // -o-transition: all 0.5s ease;
+    // transition: all 0.5s ease;
     color: white;
 }
 
@@ -54,7 +55,7 @@
 
 .sidebar-nav li {
     text-indent: 10px;
-    line-height: 40px;
+    line-height: 30px;
     margin-left: 15px;
     margin-right: 35px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
