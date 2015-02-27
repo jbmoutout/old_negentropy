@@ -9,7 +9,9 @@
           <% if @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.size != 0 %>
             <div class="row">
               <div class="col-xs-1">
-                <img src="<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:profile_image_url] %>" class="img img-tweet">
+                <div class="padding-right">
+                  <img src="<%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:profile_image_url] %>" class="img img-tweet">
+                </div>
               </div>
               <div class="col-xs-11">
                 <p><strong><%= @tweets[:status].select { |twt| twt.id == tweet.in_reply_to_status_id }.first.attrs[:user][:name] %></strong></p>
