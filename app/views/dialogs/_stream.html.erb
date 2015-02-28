@@ -4,11 +4,11 @@
     <div class="col-xs-8 col-xs-offset-2">
       <% Dialog.all.each do |d| %>
         <div class="stream-item">
-          <div class="row">
+          <div class="row" id='origin_tweet_box'>
             <div class="col-xs-1">
-              <img src="<%= d.origin_profilpic_url %>" class="img img-tweet">
+              <img src="<%= d.origin_profilpic_url %>" >
             </div>
-            <div class="col-xs-11">
+            <div class="col-xs-11" id='origin_tweet_text'>
               <p><strong><%= d.origin_user %></strong>
               @<%= d.origin_screen_name %>
               <% if d.origin_date != nil %>
@@ -18,18 +18,30 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-8">
               <div class="img-tweet-box">
                 <div class="overlay"></div>
                 <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
                 <img src="<%= d.img_url %>" class="img img-tweet"> 
               </div>
             </div>
+            <div class="col-xs-1">
+              <img src="http://placehold.it/30x30" >
+            </div>
+            <div class="col-xs-1">
+              <p>NonPrintingCharacter</p>
+              <p>@nonprintingc</p>
+            </div>
+            <div class="col-xs-2">
+
+            </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
               <p>
-                <%= d.text %>
+                <%= d.text.match(/(?<=: )(.*?),/) %>
+                <%= d.text.match(/(["'])(?:(?=(\\?))\2.)*?\1/) %>,
+                <%= d.text.match(/\d{4}/) %>
               </p>
             </div>
           </div>

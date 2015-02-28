@@ -1,22 +1,25 @@
-<p><u>Collection</u></p>
-  Artists: <% @dialogs.each do |t| %>
-  <%= t.text.match(/(?<=: )(.*?),/) %>
-  <% end %>
-<% @dialogs.each do |d| %>
-        <div class="stream-item">
-          <div class="row">
-            <div class="col-xs-4">
-              <div class="img-tweet-box">
-                <img src="<%= d.img_url %>" class="img img-tweet"> 
+<div class="container">
+  <div class="row">
+    <p><u>Collection</u></p>
+      Artists: <% @dialogs.each do |t| %>
+      <%= t.text.match(/(?<=: )(.*?),/) %>
+      <% end %>
+    <% @dialogs.each do |d| %>
+            <div class="stream-item">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="img-tweet-box">
+                    <img src="<%= d.img_url %>" class="img img-tweet"> 
+                  </div>
+
+                  <div class="col-xs-6">
+                    <div class="img-tweet-box">
+                      <%= d.text.match(/(?<=: )(.*?),/) %>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-4">
-              <p>
-                <%= d.text %>
-              </p>
-            </div>
-          </div>
-        </div>
-      <% end %>
+          <% end %>
+  </div>
+</div>
