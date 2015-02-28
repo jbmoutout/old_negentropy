@@ -7,8 +7,11 @@
   padding-top: 8em;
   padding-bottom: 8em;
 }
-.padding1 {
-  padding: 2px;
+.padding-bot {
+  padding-bottom: 2px;
+}
+.padding-right {
+  padding-right: 5px;
 }
 .bg-red {
   background: $red;
@@ -50,5 +53,31 @@
 .img-tweet-box {
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 7px;
+  overflow: hidden;
+}
+.img-tweet-box > .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFF;
+  opacity: 0;
+}
+.img-tweet-box:hover .overlay {
+  opacity: 0.3;
+}
+.img-tweet-box .button {
+  z-index: 1000;
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  padding: 10px 0;
+  background: black;
+  text-align: center;
+  color: #FFF;
+  font-family: sans-serif;
+  text-decoration: none;
+  display: none;
 }

@@ -1,4 +1,9 @@
-class DialogPolicy < ApplicationPolicy
+class CollectionPolicy < ApplicationPolicy
+
+  def new?
+    true
+  end
+
   def index?
     true
   end
@@ -7,18 +12,9 @@ class DialogPolicy < ApplicationPolicy
     true
   end
 
-  def collection?
-    true
-  end
-
-  def add?
-    true
-  end
-
   class Scope < Scope
     def resolve
       scope.all
     end
   end
-
 end

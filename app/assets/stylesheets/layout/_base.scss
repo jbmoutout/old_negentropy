@@ -4,3 +4,29 @@
  * Before writing in this file, look if there is not
  * already a Bootstrap SCSS variable that does the same job
  * ------------------------------------- */
+
+ .scroll-top {
+  color: white;
+  display: none;
+  position: fixed;
+  background: black;
+  padding: 6px;
+  cursor: pointer;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+ }
+
+ @media(min-width:768px) {
+  .scroll-top {
+  color: white;
+  display: none;
+  position: fixed;
+  background: black;
+  padding: 10px;
+  cursor: pointer;
+  right: 0;
+  bottom: 0;
+  margin-right: 186px;
+ }
+}

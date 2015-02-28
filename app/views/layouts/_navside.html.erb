@@ -13,39 +13,35 @@
       <ul class="nav navbar-nav">
         <li>
           <% if user_signed_in? %>
-          <%= image_tag current_user.image, class: "img-avatar" %>
-          <%= current_user.name %>
+          <div class="padding-bot">
+            <%= image_tag current_user.image, class: "img-avatar" %>
+            <%= current_user.name %>
+          </div>
           <% end %>
         </li>
         <li>
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/artworks">Overview</a>
-        </li>
-        <li>
-          <a href="#">Events</a>
+          <a href="/collection">Collection</a>
         </li>
         <li>
           <a href="#">About</a>
         </li>
-        <li>
-          <a href="#">Contact</a>
-        </li>
-        <li>
           <% if user_signed_in? %>
-       </li>
        <li>
           <%= link_to 'Sign out', destroy_user_session_path, method:'delete'%>
        </li>
-       <li>
           <% if current_user.admin %>
+        <li>
           <%= link_to "Admin", admin_root_path%>
+        </li>
           <% end %>
           <% else %>
+        <li>
           <%= link_to "Log in", user_omniauth_authorize_path(:twitter)%>
-        <% end %></a>
-       </li>
+        </li>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -55,10 +51,13 @@
   <!-- Sidebar -->
   <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
+
           <li>
             <% if user_signed_in? %>
-            <%= image_tag current_user.image, class: "img-avatar" %>
-            <%= current_user.name %>
+            <div class="padding-bot">
+              <%= image_tag current_user.image, class: "img-avatar" %>
+              <%= current_user.name %>
+            </div>
             <% end %>
           </li>
           <li>
@@ -67,28 +66,26 @@
               </a>
           </li>
           <li>
-              <a href="/artworks">Overview</a>
-          </li>
-          <li>
-              <a href="#">Events</a>
+              <a href="/collection">Collection</a>
           </li>
           <li>
               <a href="#">About</a>
           </li>
+            <% if user_signed_in? %>
           <li>
-              <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, method:'delete'%>
           </li>
-          <li>
-        <%= link_to 'Sign out', destroy_user_session_path, method:'delete'%>
-          </li>
-          <li>
-        <% if current_user.admin %>
-          <%= link_to "Admin", admin_root_path%>
-        <% end %>
-        <% else %>
-        <%= link_to "Log in", user_omniauth_authorize_path(:twitter)%>
-      <% end %></a>
-          </li>
+            <% if current_user.admin %>
+            <li>
+              <%= link_to "Admin", admin_root_path%>
+            </li>
+            <% end %>
+            <% else %>
+            <li>
+              <%= link_to "Log in", user_omniauth_authorize_path(:twitter)%>
+            </li>
+            <% end %>
+
       </ul>
   </div>
   <!-- /#sidebar-wrapper -->

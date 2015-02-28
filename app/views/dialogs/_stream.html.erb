@@ -2,15 +2,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <% @dialogs.each do |d| %>
+      <% Dialog.all.each do |d| %>
         <div class="stream-item">
           <div class="row">
-            <div class="col-xs-1">
-              <div class="padding-right">
-                <img src="<%= d.origin_profilpic_url %>" class="img img-tweet">
-              </div>
+            <div class="col-xs-1 col-sm-1 col-sm-offset-1">
+              <img src="<%= d.origin_profilpic_url %>" class="img img-tweet">
             </div>
-            <div class="col-xs-11">
+            <div class="col-xs-11 col-sm-9">
               <p><strong><%= d.origin_user %></strong>
               @<%= d.origin_screen_name %>
               <% if d.origin_date != nil %>
@@ -20,16 +18,16 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12" >
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
               <div class="img-tweet-box">
                 <div class="overlay"></div>
-                <a href="#" class="button">Add</a>
+                <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
                 <img src="<%= d.img_url %>" class="img img-tweet"> 
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
               <p>
                 <%= d.text %>
               </p>
@@ -40,4 +38,3 @@
     </div>
   </div>
 </div>
-
