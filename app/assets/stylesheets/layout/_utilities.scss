@@ -10,6 +10,14 @@
 .padding-bot {
   padding-bottom: 2px;
 }
+
+.padding-bottom {
+  padding-bottom: 10px;
+}
+
+.padding-top {
+  padding-top: 10px;
+}
 .padding-right {
   padding-right: 5px;
 }
@@ -45,6 +53,12 @@
 .stream-item {
   padding: 10px;
   margin: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.stream-item-lt {
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .img-tweet {

@@ -1,5 +1,8 @@
 # Negentropy
 
+##Art is information
+
+
 ## Configuration
 
 The app configuration lies in `config/application.yml` and is **not**
