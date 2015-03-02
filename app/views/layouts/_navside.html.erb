@@ -36,11 +36,20 @@
         <li>
           <%= link_to "Admin", admin_root_path%>
         </li>
+        <li>
+          <%= link_to "Connexion", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
+        </li>
           <% end %>
           <% else %>
         <li>
           <%= link_to "Log in", user_omniauth_authorize_path(:twitter)%>
         </li>
+        <% if user_signed_in? %>
+          <%= image_tag current_user.picture, class: "img-avatar" %>
+        <% end %>
         <% end %>
       </ul>
     </div>
