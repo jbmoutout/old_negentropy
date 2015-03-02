@@ -13,6 +13,7 @@ gem "high_voltage"
 gem "devise"
 gem "twitter"
 gem "omniauth-twitter"
+gem 'omniauth-facebook'
 gem "pundit"
 gem "paperclip"
 gem "aws-sdk"
