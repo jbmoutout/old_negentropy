@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+
+
   ActiveAdmin.routes(self)
   resources :dialogs do
       put :add, to: "dialogs#add"
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :artworks
+  resources :artists, only: [:index, :show]
 
   get "/collection", to: "dialogs#collection"
 

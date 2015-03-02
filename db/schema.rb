@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227140559) do
+ActiveRecord::Schema.define(version: 20150302172009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20150227140559) do
 
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
-    t.date     "date"
     t.integer  "artist_id"
     t.string   "description"
     t.datetime "created_at",           null: false
@@ -51,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150227140559) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "date"
   end
 
   add_index "artworks", ["artist_id"], name: "index_artworks_on_artist_id", using: :btree
@@ -74,7 +74,10 @@ ActiveRecord::Schema.define(version: 20150227140559) do
     t.string   "origin_screen_name"
     t.string   "origin_text"
     t.string   "origin_date"
+    t.integer  "artwork_id"
   end
+
+  add_index "dialogs", ["artwork_id"], name: "index_dialogs_on_artwork_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "encrypted_password",     default: "",    null: false
@@ -116,4 +119,5 @@ ActiveRecord::Schema.define(version: 20150227140559) do
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "artworks", "artists"
+  add_foreign_key "dialogs", "artworks"
 end
