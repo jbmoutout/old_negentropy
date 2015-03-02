@@ -2,7 +2,7 @@
  * Colors & Fonts
  * ------------------------------------- */
 $navbar-color: white;
-$navbar-hover-color: rgba(255,255,255,1);
+$navbar-hover-color: white;
 $navbar-font-family: $navbar-font;
 $navbar-font-size: 14px;
 $navbar-text-transform: capitalize;
@@ -23,11 +23,18 @@ $navbar-border-bottom-color: white;
 /* -------------------------------------
  * Navbar button
  * ------------------------------------- */
-$navbar-btn-height: 40px;
+$navbar-btn-height: 10px;
 $navbar-btn-bg: white;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
 $navbar-btn-radius: 2px;
+
+/* -------------------------------------
+* Navbar profile picture
+* ------------------------------------- */
+$navbar-profile-radius: 0;
+$navbar-profile-border-color: white;
+$navbar-profile-border-width: 0.5px;
 
 // penser à modifier la coleur du hover qui bug et supprimer qq elements dans
  // .navbar-nav > li > a, aussi pour diminuer la taille de la navbar
@@ -66,12 +73,57 @@ $navbar-btn-radius: 2px;
   .navbar-nav > li > a:hover,
   .navbar-nav > .open > a:hover {
     color: black;
-    background-color: $navbar-hover-color;
+    background-color: white;
   }
 
 }
 
 .navbar-nav > li {
-  color: white;
+  color: black;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+}
+
+.navbar-nav > li > .dropdown-menu{
+  border-radius: 0;
+  margin-top: 10px;
+}
+.navbar-nav > li > .dropdown-menu:before{
+  position: absolute;
+  background: white;
+  height: 10px;
+  width: 10px;
+  content: "\00a0";
+  display: block;
+  left: 50%;
+  margin-left: -5px;
+  top: -5px;
+  transform: rotate(45deg);
+  border-top: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+  z-index: -1;
+}
+
+.img-avatar{
+  border: $navbar-profile-border-width solid $navbar-profile-border-color;
+  box-shadow: 0 0 1px rgb(200, 200, 200);
+  height: 35px;
+  margin-right: 10px;
+  margin-top: -4px;
+  border-radius: $navbar-profile-radius;
+
+}
+
+#searchbar {
+  margin-top: 10px;
+  margin-right: 30px;
+  padding-left: 100px;
+  vertical-align: left;
+  border: none;
+  height: 35px;
+}
+
+#login_button {
+  height: 20px;
+  margin-right: 10px;
 }
