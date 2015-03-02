@@ -3,12 +3,13 @@ class ArtworksController < ApplicationController
 
 
   def new
+    @artwork = Artwork.new
 
   end
 
   def create
-
   end
+
 
   def update
   end
@@ -20,13 +21,10 @@ class ArtworksController < ApplicationController
   end
 
   def index
-    @tweets = policy_scope(Artwork)
   end
 
   def show
   end
 
-  def artwork_params
-  params.require(:artwork).permit(:name, :date, :description, :picture)
-  end
+
 end
