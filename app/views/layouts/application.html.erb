@@ -12,23 +12,36 @@
   <%= favicon_link_tag 'pic.ico', :rel => 'shortcut icon', :type => 'image/x-icon" rel="shortcut icon' %>
 </head>
 <body>
-  <%= render "shared/navbar" %>
+  <%# render "shared/navbar" %>
   <%= render "shared/flashes" %>
-  <%= render 'layouts/navside' %>
+  <%# render 'layouts/navside' %>
 
-<div class="full-src">
+<!-- <div class="full-src"> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h1><%= link_to "Negentropy", home_path %></h1>
+    </div>
+    <div class="col-xs-2">
+      <h1>Search</h1>
+    </div>
+    <div class="col-xs-1">
+      <%= render "shared/navbar" %>
+    </div>
+  </div>
+</div>
+
   <div class="container">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
-        <h1>
-          <%= link_to "Negentropy", home_path %>
-        </h1>
+
       </div>
     </div>
   </div>
 <%= link_to 'Sign out', new_user_path, method:'delete'%>
   <%= yield %>
-</div>
+<!-- </div> -->
 
   <%= javascript_include_tag :application %>
   <%= yield(:after_js) %>
