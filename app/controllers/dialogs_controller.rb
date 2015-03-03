@@ -2,6 +2,7 @@ class DialogsController < ApplicationController
   skip_after_action :verify_authorized, only: :collection
   def index
     @dialogs = policy_scope(Dialog)
+    @artists = Artist.all
   end
 
   def collection

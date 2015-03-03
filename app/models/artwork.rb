@@ -14,11 +14,14 @@ class Artwork < ActiveRecord::Base
   # end
 
   def self.save_tweets(dialog)
-      artist_name = dialog.text.match(/(?<=: )(.*?),/)[0]
+      artist_name = dialog.text.match(/(?<=: )(.*?),/)
+      artist_name &&= artist_name[1]
       artist = Artist.where(name: artist_name).first_or_create!
 
-      name = dialog.text.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0]
-      date = dialog.text.match(/\d{2,4}/)[0].to_i
+      name = dialog.text.match(/(["'])(?:(?=(\\?))\2.)*?\1/)
+      name &&= name[0]
+      date = dialog.text.match(/\d{2,4}/)
+      date &&= date[0].to_i
 
       artwork = Artwork.where(artist: artist, name: name).first_or_create! do |artwork|
         artwork.date = date
