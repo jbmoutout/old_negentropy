@@ -32,12 +32,7 @@ $(document).ready(function(){
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <div class="bs-example">
-                <% unless user_signed_in? %>
-                <a href="#" class="btn">Sign in / Sign up</a>
-                <% end %>
-          </li>
-          <li>
+            <div id="search">
             <!-- <input type="search" placeholder="Search..." id="searchbar"> -->
             <input name="artist" placeholder="Search..." id="artist" />
 
@@ -61,26 +56,32 @@ $(document).ready(function(){
               });
             </script>
             <% end %>
+            </div>
           </li>
           <li>
-                <!-- Modal HTML -->
-                <div id="myModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Negentropy</h4>
-                                <p>Sign in to Negentropy or create an account</p>
-                            <div class="modal-footer">
-                                <%= link_to "Connect with Facebook /", user_omniauth_authorize_path(:facebook) %>
-
-                                <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
-                            </div>
-                            </div>
-                        </div>
+            <div class="bs-example">
+                <% unless user_signed_in? %>
+                <a href="#" class="btn">Sign in / Sign up</a>
+                <% end %>
+          </li>
+          <li>
+            <!-- Modal HTML -->
+            <div id="myModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Negentropy</h4>
+                    <p>Sign in to Negentropy or create an account</p>
+                    <div class="modal-footer">
+                    <%= link_to "Connect with Facebook /", user_omniauth_authorize_path(:facebook) %>
+                    <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
                     </div>
+                  </div>
                 </div>
-            </li>
+              </div>
+            </div>
+          </li>
            <% if user_signed_in? %>
             <li><%= image_tag current_user.image, class: "img-avatar" %></li>
             <li><%= current_user.name %></li>
