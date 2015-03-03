@@ -7,19 +7,23 @@
   padding-top: 8em;
   padding-bottom: 8em;
 }
+.padding1 {
+  padding: 3px;
+}
 .padding-bot {
   padding-bottom: 2px;
 }
-
 .padding-bottom {
   padding-bottom: 10px;
 }
-
 .padding-top {
   padding-top: 10px;
 }
 .padding-right {
   padding-right: 5px;
+}
+.padding-left {
+  padding-left: 10px;
 }
 .bg-red {
   background: $red;
@@ -53,7 +57,11 @@
 .stream-item {
   padding: 10px;
   margin: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #EAEAEA;
+
+  &-container {
+    height: 100%;
+  }
 }
 
 .stream-item-lt {
@@ -62,8 +70,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .img-tweet {
-  width: 100%;
+  width: 60%;
+  text-align: center;
 
+}
+
+.img-origin-tweet {
+  width: 60%;
 }
 .img-tweet-box {
   text-align: left;
@@ -84,11 +97,11 @@
   opacity: 0;
 }
 .img-tweet-box .button {
-  font-size: 30px;
+  font-size: 20px;
   z-index: 1000;
   position: absolute;
   bottom: 7px;
-  width: 10%;
+  width: 7%;
   padding: 10px 0;
   background: black;
   text-align: center;
@@ -99,10 +112,26 @@
 }
 
 #origin_tweet_box {
-  background-color: #F8F8F8;
+  background: #F8F8F8;
+  padding: 30px;
+  margin-bottom: 20px;
+
+}
+
+#origin_tweet_profil {
+  margin-left: -12px;
+  // margin-top: -5px;
+  font-size: 12px;
 
 }
 
 #origin_tweet_text {
   padding-bottom: -10px;
+}
+
+
+
+.row.borders{
+    display: inline-flex;
+    width: 100%;
 }

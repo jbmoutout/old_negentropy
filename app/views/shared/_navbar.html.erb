@@ -32,6 +32,7 @@ $(document).ready(function(){
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
+<<<<<<< HEAD
             <input type="search" placeholder="Search..." id="searchbar">
           </li>
           <li>
@@ -39,6 +40,42 @@ $(document).ready(function(){
                 <!-- Button HTML (to Trigger Modal) -->
                 <% unless user_signed_in? %>
                 <a href="#" class="btn">Sign in / Sign up</a>
+=======
+            <!-- <input type="search" placeholder="Search..." id="searchbar"> -->
+
+            <input name="artist" placeholder="Search..." id="artist" />
+
+
+            <% content_for(:after_js) do %>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                var client = new AlgoliaSearch(
+                  '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
+                  '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>');
+
+                // var template = Hogan.compile('{{{_highlightResult.email.value}}} ({{{_highlightResult.first_name.value}}} {{{_highlightResult.last_name.value}}})');
+                $('#artist').typeahead(null, {
+                  source: client.initIndex('<%= Artist.index_name %>').ttAdapter(),
+                  displayKey: 'name',
+                  templates: {
+                    suggestion: function(hit) {
+                      return hit._highlightResult.name.value;
+                    }
+                  }
+                });
+              });
+            </script>
+            <% end %>
+          </li>
+
+            <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
+                <% if user_signed_in? %>
+                  <%= image_tag current_user.image, class: "img-avatar" %>
+                  <%= current_user.name %>
+                <% else %>
+                <div id="login_button">
+                  <%= link_to "twitter connect", user_omniauth_authorize_path(:twitter) %></div>
+>>>>>>> 256fc161502d39767a17e72228e2df1e813494fa
                 <% end %>
                 <!-- Modal HTML -->
                 <div id="myModal" class="modal fade">
