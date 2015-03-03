@@ -7,19 +7,23 @@
   padding-top: 8em;
   padding-bottom: 8em;
 }
+.padding1 {
+  padding: 3px;
+}
 .padding-bot {
   padding-bottom: 2px;
 }
-
 .padding-bottom {
   padding-bottom: 10px;
 }
-
 .padding-top {
   padding-top: 10px;
 }
 .padding-right {
   padding-right: 5px;
+}
+.padding-left {
+  padding-left: 10px;
 }
 .bg-red {
   background: $red;
@@ -122,4 +126,11 @@
 
 #origin_tweet_text {
   padding-bottom: -10px;
+}
+
+
+
+.row.borders{
+    display: inline-flex;
+    width: 100%;
 }
