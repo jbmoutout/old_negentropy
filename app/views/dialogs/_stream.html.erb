@@ -3,44 +3,52 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <% Dialog.all.each do |d| %>
-        <div class="stream-item">
+        <div class="stream-item-container">
+          <div class="stream-item">
 
-          <div class="row" id='origin_tweet_box'>
-            <div class="col-xs-1">
-              <img src="<%= d.origin_profilpic_url %>" >
-            </div>
-            <div class="col-xs-11" id='origin_tweet_text'>
-
-              <p><strong><%= d.origin_user %></strong>
-              @<%= d.origin_screen_name %>
-              <% if d.origin_date != nil %>
-              • <%= d.origin_date.to_date %></p>
-              <% end %>
-              <p><%= d.origin_text %></p>
-            </div>
-          </div>
-          <div class="row">
-
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-
-              <div class="img-tweet-box">
-                <div class="overlay"></div>
-                <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
-                <img src="<%= d.img_url %>" class="img img-tweet"> 
+            <div class="row" id="origin_tweet_box">
+              <div class="col-xs-1">
+                <img src="<%= d.origin_profilpic_url %>" class="img img-origin-tweet" >
               </div>
+              <div class="col-xs-11" id="origin_tweet_profil">
+
+                <p><strong><%= d.origin_user %></strong><br>
+                @<%= d.origin_screen_name %>
+                <% if d.origin_date != nil %>
+                • <%= d.origin_date.to_date %></p>
+                <% end %>
+
+              </div>
+
+                <p><%= d.origin_text %></p>
             </div>
+
 
             <div class="col-xs-2">
 
+            <div class="row">
+
+              <div class="col-xs-12 col-sm-10">
+
+                <div class="img-tweet-box">
+                  <div class="overlay"></div>
+                  <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+                  <img src="<%= d.img_url %>" class="img img-tweet"> 
+                </div>
+              </div>
+
+              <div class="col-xs-2">
+
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-              <p>
-                <%= d.text.match(/(?<=: )(.*?),/) %>
-                <%= d.text.match(/(["'])(?:(?=(\\?))\2.)*?\1/) %>,
-                <%= d.text.match(/\d{4}/) %>
-              </p>
+            <div class="row">
+              <div class="col-xs-12 col-sm-10">
+                <p>
+                  <%= d.text.match(/(?<=: )(.*?),/) %>
+                  <%= d.text.match(/(["'])(?:(?=(\\?))\2.)*?\1/) %>,
+                  <%= d.text.match(/\d{4}/) %>
+                </p>
+              </div>
             </div>
           </div>
         </div>
