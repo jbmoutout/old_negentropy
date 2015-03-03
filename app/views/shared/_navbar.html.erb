@@ -49,7 +49,9 @@ $(document).ready(function(){
                   displayKey: 'name',
                   templates: {
                     suggestion: function(hit) {
-                      return hit._highlightResult.name.value;
+                      return "<div class='search_function'>"
+                      + hit._highlightResult.name.value +
+                      "</div>";
                     }
                   }
                 });
