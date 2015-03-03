@@ -1,3 +1,20 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".btn").click(function(){
+    $("#myModal").modal('show');
+  });
+});
+</script>
+<style type="text/css">
+    .bs-example{
+      margin: 20px;
+    }
+</style>
+</head>
+<body>
 <nav class="navbar navbar-default navbar-fixed-top navbar-wagon" role="navigation">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,10 +32,14 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
+            <div class="bs-example">
+                <% unless user_signed_in? %>
+                <a href="#" class="btn">Sign in / Sign up</a>
+                <% end %>
+          </li>
+          <li>
             <!-- <input type="search" placeholder="Search..." id="searchbar"> -->
-
             <input name="artist" placeholder="Search..." id="artist" />
-
 
             <% content_for(:after_js) do %>
             <script type="text/javascript">
@@ -41,30 +62,37 @@
             </script>
             <% end %>
           </li>
+          <li>
+                <!-- Modal HTML -->
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Negentropy</h4>
+                                <p>Sign in to Negentropy or create an account</p>
+                            <div class="modal-footer">
+                                <%= link_to "Connect with Facebook /", user_omniauth_authorize_path(:facebook) %>
 
-            <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
-                <% if user_signed_in? %>
-                  <%= image_tag current_user.image, class: "img-avatar" %>
-                  <%= current_user.name %>
-                <% else %>
-                <div id="login_button">
-                  <%= link_to "twitter connect", user_omniauth_authorize_path(:twitter) %></div>
-                <% end %>
-              <%# image_tag "http://lorempixel.com/30/30/people", class: "img-avatar" %>
-              <span class="caret"></span>
+                                <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+           <% if user_signed_in? %>
+            <li><%= image_tag current_user.image, class: "img-avatar" %></li>
+            <li><%= current_user.name %></li>
+            <li><a href="/collection">Collection</a></li>
+            <% if user_signed_in? && current_user.admin %>
+            <li><%= link_to "Admin", admin_root_path %></li>
             <% end %>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/collection">Collection</a></li>
-              <% if user_signed_in? && current_user.admin %>
-              <li><%= link_to "Admin", admin_root_path %></li>
-              <% end %>
+            <li><%= link_to 'Sign out', destroy_user_session_path, method:'delete'%></li>
+           <% end %>
 
-              <% if user_signed_in? %>
-                <li><%= link_to 'Sign out', destroy_user_session_path, method:'delete'%></li>
-              <% end %>
-            </ul>
-          </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+</body>
