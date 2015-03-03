@@ -15,12 +15,33 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <input type="search" placeholder="Search..." id="searchbar">
+            <!-- <input type="search" placeholder="Search..." id="searchbar"> -->
+
+            <input name="artist" placeholder="Search..." id="artist" />
+
+
+            <% content_for(:after_js) do %>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                var client = new AlgoliaSearch(
+                  '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
+                  '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>');
+
+                // var template = Hogan.compile('{{{_highlightResult.email.value}}} ({{{_highlightResult.first_name.value}}} {{{_highlightResult.last_name.value}}})');
+                $('#artist').typeahead(null, {
+                  source: client.initIndex('<%= Artist.index_name %>').ttAdapter(),
+                  displayKey: 'name',
+                  templates: {
+                    suggestion: function(hit) {
+                      return hit._highlightResult.name.value;
+                    }
+                  }
+                });
+              });
+            </script>
+            <% end %>
           </li>
-          <li>
-            <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
-          </li>
-          <li class="dropdown">
+
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
                 <% if user_signed_in? %>
                   <%= image_tag current_user.image, class: "img-avatar" %>

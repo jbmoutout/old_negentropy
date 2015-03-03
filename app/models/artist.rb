@@ -4,8 +4,10 @@ class Artist < ActiveRecord::Base
   validates :name, uniqueness: true
   has_many :artworks
 
-  algoliasearch do
-    attribute :name, :birthdate, :death_date, :description
+  algoliasearch index_name: "Artist#{ENV['ALGOLIA_SUFFIX']}" do
+    attribute :name, :description, :birthdate, :death_date
+
+    attributesToIndex ['name', 'unordered(birthdate)' ]
   end
 
 end

@@ -3,7 +3,6 @@ class ArtworksController < ApplicationController
 
 
   def new
-    @artwork = Artwork.new
 
   end
 
@@ -24,6 +23,8 @@ class ArtworksController < ApplicationController
   end
 
   def show
+    @artwork = Artwork.find(params[:id])
+    authorize @artwork
   end
 
 
