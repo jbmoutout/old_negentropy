@@ -32,19 +32,14 @@ $(document).ready(function(){
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-<<<<<<< HEAD
-            <input type="search" placeholder="Search..." id="searchbar">
-          </li>
-          <li>
             <div class="bs-example">
-                <!-- Button HTML (to Trigger Modal) -->
                 <% unless user_signed_in? %>
                 <a href="#" class="btn">Sign in / Sign up</a>
-=======
+                <% end %>
+          </li>
+          <li>
             <!-- <input type="search" placeholder="Search..." id="searchbar"> -->
-
             <input name="artist" placeholder="Search..." id="artist" />
-
 
             <% content_for(:after_js) do %>
             <script type="text/javascript">
@@ -67,16 +62,7 @@ $(document).ready(function(){
             </script>
             <% end %>
           </li>
-
-            <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
-                <% if user_signed_in? %>
-                  <%= image_tag current_user.image, class: "img-avatar" %>
-                  <%= current_user.name %>
-                <% else %>
-                <div id="login_button">
-                  <%= link_to "twitter connect", user_omniauth_authorize_path(:twitter) %></div>
->>>>>>> 256fc161502d39767a17e72228e2df1e813494fa
-                <% end %>
+          <li>
                 <!-- Modal HTML -->
                 <div id="myModal" class="modal fade">
                     <div class="modal-dialog">
@@ -89,23 +75,22 @@ $(document).ready(function(){
                                 <%= link_to "Connect with Facebook /", user_omniauth_authorize_path(:facebook) %>
 
                                 <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
-
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </li>
            <% if user_signed_in? %>
-                <%= image_tag current_user.image, class: "img-avatar" %>
-                <%= current_user.name %>
+            <li><%= image_tag current_user.image, class: "img-avatar" %></li>
+            <li><%= current_user.name %></li>
             <li><a href="/collection">Collection</a></li>
+            <% if user_signed_in? && current_user.admin %>
+            <li><%= link_to "Admin", admin_root_path %></li>
+            <% end %>
             <li><%= link_to 'Sign out', destroy_user_session_path, method:'delete'%></li>
            <% end %>
-                     <li>
-           <% if user_signed_in? && current_user.admin %>
-            <li><%= link_to "Admin", admin_root_path %></li>
-           <% end %>
-          </li>
+
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
