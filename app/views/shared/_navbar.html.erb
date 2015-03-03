@@ -41,14 +41,14 @@
             </script>
             <% end %>
           </li>
-          <li class="drop down">
+
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
                 <% if user_signed_in? %>
                   <%= image_tag current_user.image, class: "img-avatar" %>
                   <%= current_user.name %>
                 <% else %>
                 <div id="login_button">
-                  <%= link_to "Log in", user_omniauth_authorize_path(:twitter) %></div>
+                  <%= link_to "twitter connect", user_omniauth_authorize_path(:twitter) %></div>
                 <% end %>
               <%# image_tag "http://lorempixel.com/30/30/people", class: "img-avatar" %>
               <span class="caret"></span>
