@@ -24,7 +24,4 @@ class DialogsController < ApplicationController
 
   def show
   end
-
-
-
 end
