@@ -1,31 +1,31 @@
 
-<div class="padding-top">
-  <div class="container">
-    <div class="row">
-      <p class="padding-bottom"><u>Collection</u></p>
-      <div class="col-xs-3 col-xs-offset-9 col-sm-3 col-sm-offset-9">
-        <div class="padding-top">
-          <p>Artists: <% @dialogs.each do |t| %>
-            <div class="row">
-              <%= t.text.match(/(?<=: )(.*?),/) %>
-            </div>
-            <% end %>
+<div class="padding-top"></div>
+<p class="padding-bottom padding-left">
+  Collection:
+</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-10">
+      <div class="fixed">
+        <p class="padding-bottom">
+          <u>Artists:</u>
+        </p>
+        <% @dialogs.each do |t| %>
+          <p>
+            <%= t.text.match(/(?<=: )(.*?),/) %>
           </p>
-        </div>
+        <% end %>
       </div>
-      <div class="stream-item-lt"></div>
-      <% @dialogs.each do |d| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class=" padding1">
-            <div class="img-tweet-box">
-              <img src="<%= d.img_url %>" class="img img-tweet"> 
-            </div>
-            <div class="img-tweet-box">
-              <%= d.text.match(/(?<=: )(.*?),/) %>
-            </div>
-          </div>
-        </div>
-      <% end %>
     </div>
+  </div>
+  <div class="pad-right">
+    <section id="cards">
+      <% @dialogs.each do |d| %>
+        <img src="<%= d.img_url %>" class="img img-tweet"> 
+          <p class="pad-left">
+            <%= d.text.match(/(?<=: )(.*?),/) %>
+          </p>
+      <% end %>
+    </section>
   </div>
 </div>
