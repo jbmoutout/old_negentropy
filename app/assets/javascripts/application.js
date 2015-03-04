@@ -15,11 +15,18 @@ var display_backtotop = 800; // Scrolled pixels from top until the link appears
 
 $(document).ready(function() {
   $('.overlay').on('mouseenter', function() {
-        $(this).next().slideDown();
+        $(this).next().slideDown(1);
       })
 
       $('.img-tweet-box').on('mouseleave', function() {
-        $(this).children('a').slideUp();
+        $(this).children('a').slideUp(1);
+      });
+  $('.overimg').on('mouseenter', function() {
+        $(this).next().slideDown(1);
+      })
+
+      $('.overimg').on('mouseleave', function() {
+        $(this).children('a').slideUp(1);
       });
   $(window).scroll(function() {
     if ($(this).scrollTop() > display_backtotop) {
