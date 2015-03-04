@@ -4,18 +4,19 @@
     <div class="col-xs-2">
       <div class="fixed">
           <h1class="padding-bottom padding-left">
-            <u><%= @artist.name  %></u>
+            <u><%= @artist.name  %></u><br>
+            <p><%= @artist.description %></p>
           </h1>
           <div class="padding-top"></div>
           <p class="padding-bottom">
-            ses œuvres:
+            Galleries:
           </p>
           <p>1</p>
           <p>2</p>
           <p>3</p>
           <div class="padding-top"></div>
           <p class="padding-bottom">
-            galleries:
+            Read:
           </p>
           <p>1</p>
           <p>2</p>
@@ -23,24 +24,25 @@
       </div>
     </div>
   </div>
+
   <div class="pad-left2">
     <div class="row">
-      <div class="col-xs-12">
+
 
         <% @artist.artworks.each do |artwork| %>
-        <%= artwork.name %>
-        <%# artwork.dialog.img_url %>
+        <div class="padding-bottom">
+          <div class="col-xs-4-offset-2">
+          <%= artwork.name %>,
+          <%= artwork.date %>
+          </div>
+           <% artwork.dialogs.each do |a| %>
+          <div class="col-xs-4">
+              <div class="padding-bottom"><img src=<%= a.img_url %>></div>
+          </div>
+            <% end %>
         <% end %>
 
-        <img src="http://www.lorempixel.com/400/200/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/200/200/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/300/300/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/500/200/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/400/400/cats" alt="pretty kitty" class="img img-tweet">  
+   
       </div>
     </div>
     </section>

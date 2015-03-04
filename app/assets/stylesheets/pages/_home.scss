@@ -46,11 +46,13 @@ outline-color: black;
 }
 
 .alert-info {
+  z-index: 1000;
+  position: fixed;
   background-color: black;
   border-color: black;
   color: white;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 3px;
 }
 
 .alert-warning {

@@ -4,7 +4,7 @@
 $navbar-color: #737373;
 $navbar-hover-color: $yellow;
 $navbar-font-family: $header-font;
-$navbar-bg: #f6f6f6;
+$navbar-bg: white;
 
 /* -------------------------------------
  * Box model
@@ -27,9 +27,9 @@ $navbar-btn-radius: 2px;
 /* -------------------------------------
  * Navbar profile picture
  * ------------------------------------- */
-$navbar-profile-radius: 50%;
-$navbar-profile-border-color: white;
-$navbar-profile-border-width: 2px;
+$navbar-profile-radius: 0%;
+$navbar-profile-border-color: transparent;
+$navbar-profile-border-width: 1px;
 
 /* -------------------------------------
  * SCSS code
@@ -158,9 +158,11 @@ $input-height: 35px;
 .navbar-wagon .twitter-typeahead {
   top: $navbar-vertical-padding + (($navbar-height - $input-height) / 2);
   right: 20px;
+
   input {
     height: $input-height;
     border: none;
+
   }
 }
 
