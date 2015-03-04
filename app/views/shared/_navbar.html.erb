@@ -31,15 +31,8 @@ $(document).ready(function(){
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <div class="bs-example">
-                <% unless user_signed_in? %>
-                <a href="#" class="btn">Sign in / Sign up</a>
-                <% end %>
-          </li>
-          <li>
-            <!-- <input type="search" placeholder="Search..." id="searchbar"> -->
-            <input name="artist" placeholder="Search..." id="artist" />
+
+          <li><input name="artist" placeholder="Search..." id="artist" /></li>
 
             <% content_for(:after_js) do %>
             <script type="text/javascript">
@@ -61,9 +54,13 @@ $(document).ready(function(){
               });
             </script>
             <% end %>
-          </li>
           <li>
                 <!-- Modal HTML -->
+          <li>
+            <div class="bs-example">
+                <% unless user_signed_in? %>
+                <a href="#" class="btn">Sign in / Sign up</a>
+                <% end %>
                 <div id="myModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -80,14 +77,31 @@ $(document).ready(function(){
                         </div>
                     </div>
                 </div>
+            </div>
             </li>
            <% if user_signed_in? %>
-            <li><%= image_tag current_user.image, class: "img-avatar" %></li>
-            <li><%= current_user.name %></li>
             <li><a href="/collection">Collection</a></li>
             <% if user_signed_in? && current_user.admin %>
             <li><%= link_to "Admin", admin_root_path %></li>
             <% end %>
+############
+
+              <div class="dropdown">
+                <button class="btn btn-default" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  Dropdown
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                </ul>
+              </div>
+
+#############
+            <li><%= image_tag current_user.image, class: "img-avatar" %></li>
+            <li><%= current_user.name %></li>
             <li><%= link_to 'Sign out', destroy_user_session_path, method:'delete'%></li>
            <% end %>
 
