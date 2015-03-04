@@ -4,6 +4,7 @@
 //= require algolia/algoliasearch.min
 //= require algolia/typeahead.jquery
 //= require_tree ./app
+//= require headroom.js
 
 
 // Please do not put any code in here. Create a new .js file in

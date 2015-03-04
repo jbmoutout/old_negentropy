@@ -1,42 +1,24 @@
 <div class="padding-top"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="fixed">
-          <h1class="padding-bottom padding-left">
-            <u><%= @artist.name  %></u>
-          </h1>
-          <div class="padding-top"></div>
-          <p class="padding-bottom">
-            ses œuvres:
-          </p>
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-          <div class="padding-top"></div>
-          <p class="padding-bottom">
-            galleries:
-          </p>
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-      </div>
-    </div>
+<div class="container artist-page">
+  <div class="artist-sidebar">
+    <p class='artist-name'><%= @artist.name  %></p><br>
+    <p><%= @artist.description %></p>
+    <p>Galleries</p>
+    <p>Reads</p>
   </div>
-  <div class="pad-left2">
-    <div class="row">
-      <div class="col-xs-12">
-        <img src="http://www.lorempixel.com/400/200/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/200/200/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/300/300/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/500/200/cats" alt="pretty kitty" class="img img-tweet"> 
-        <div class="padding-top"></div>
-        <img src="http://www.lorempixel.com/400/400/cats" alt="pretty kitty" class="img img-tweet">  
-      </div>
-    </div>
-    </section>
+  <div class='artist-timeline'>
+
+    <% @artist.artworks.each_with_index do |artwork, index| %>
+      <% index = [artwork.name, artwork.date] %>
+
+      <% artwork.dialogs.each do |a| %>
+        <div class="artist-card">
+          <img src=<%= a.img_url %>>
+          <p><%= index[0].gsub('"', '') %>, <span><%= index[1] %></span></p>
+
+
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
