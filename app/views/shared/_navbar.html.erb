@@ -51,6 +51,7 @@
 
 
 
+
 <div id="fb-login" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -74,7 +75,6 @@
       var client = new AlgoliaSearch(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>');
-
       // var template = Hogan.compile('{{{_highlightResult.email.value}}} ({{{_highlightResult.first_name.value}}} {{{_highlightResult.last_name.value}}})');
       $('#artist').typeahead(null, {
         source: client.initIndex('<%= Artist.index_name %>').ttAdapter(),

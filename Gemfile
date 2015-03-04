@@ -17,6 +17,7 @@ gem 'omniauth-facebook'
 gem "pundit"
 gem "paperclip"
 gem "aws-sdk"
+gem 'rest-client', '~> 1.7.3'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
