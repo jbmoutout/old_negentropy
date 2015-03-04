@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 20150303163322) do
 
   add_index "artworks", ["artist_id"], name: "index_artworks_on_artist_id", using: :btree
 
+  create_table "collections", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "dialog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "dialogs", force: :cascade do |t|
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
