@@ -99,9 +99,9 @@ ActiveRecord::Schema.define(version: 20150304093030) do
     t.string   "image"
     t.string   "name"
     t.string   "email"
+    t.boolean  "admin",                  default: false, null: false
     t.string   "token"
     t.string   "secret"
-    t.boolean  "admin",                  default: false, null: false
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

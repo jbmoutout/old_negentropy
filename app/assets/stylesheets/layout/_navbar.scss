@@ -34,6 +34,8 @@ $navbar-profile-border-width: 0px;
 /* -------------------------------------
  * SCSS code
  * ------------------------------------- */
+
+
 .navbar-wagon {
   background: $navbar-bg;
   font-family: $navbar-font-family;
@@ -43,7 +45,7 @@ $navbar-profile-border-width: 0px;
   padding-left: $navbar-horizontal-padding;
   padding-right: $navbar-horizontal-padding;
   min-height: 0;
-  transition: background 0.4s ease;
+  opacity: 0.8;
 
   .navbar-nav > li > a,
   .navbar-nav > .open > a,
@@ -171,4 +173,7 @@ $input-height: 35px;
   background: black;
   color: white;
 }
+
+
+
 
