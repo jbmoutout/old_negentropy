@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304093030) do
+ActiveRecord::Schema.define(version: 20150304153215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20150304093030) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "artists_galleries", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.integer  "gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "artists_galleries", ["artist_id"], name: "index_artists_galleries_on_artist_id", using: :btree
+  add_index "artists_galleries", ["gallery_id"], name: "index_artists_galleries_on_gallery_id", using: :btree
 
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
@@ -82,12 +92,9 @@ ActiveRecord::Schema.define(version: 20150304093030) do
 
   create_table "galleries", force: :cascade do |t|
     t.string   "name"
-    t.integer  "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "galleries", ["artist_id"], name: "index_galleries_on_artist_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "encrypted_password",     default: "",    null: false
@@ -128,7 +135,8 @@ ActiveRecord::Schema.define(version: 20150304093030) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "artists_galleries", "artists"
+  add_foreign_key "artists_galleries", "galleries"
   add_foreign_key "artworks", "artists"
   add_foreign_key "dialogs", "artworks"
-  add_foreign_key "galleries", "artists"
 end

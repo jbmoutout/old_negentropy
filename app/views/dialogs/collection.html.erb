@@ -7,12 +7,12 @@
   <div class="row">
     <div class="col-xs-2 col-xs-offset-10">
       <div class="fixed">
-        <p class="padding-bottom">
+        <p class="padding-bottom padding-top">
           <u>Artists:</u>
         </p>
-        <% @dialogs.each do |t| %>
+        <% @dialogs.each do |d| %>
           <p>
-            <%= t.text.match(/(?<=: )(.*?),/) %>
+            <%= link_to d.artwork.artist.name, artist_path(d.artwork.artist_id) %>
           </p>
         <% end %>
       </div>
@@ -21,7 +21,6 @@
   <div class="pad-right">
     <section id="cards">
       <% @dialogs.each do |d| %>
-       <!--  <img src="<%#= d.img_url %>" class="img img-tweet">  -->
         <div class="img-tweet-box">
           <div class="overimg"></div>
           <%= link_to "-", dialog_remove_path(:dialog_id => d.id), method: :put, class: "button-" %>
