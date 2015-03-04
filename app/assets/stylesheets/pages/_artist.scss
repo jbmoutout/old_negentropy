@@ -14,6 +14,7 @@
     font-weight: bold;
   }
 
+
   &-timeline {
     float: right !important;
   }
@@ -39,6 +40,14 @@
     }
 
   }
+}
+
+.margin-top {
+  margin-top: 30px;
+}
+
+.margin-left{
+  margin-left: 10px;
 }
 
 .headroom {
