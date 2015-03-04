@@ -1,0 +1,68 @@
+.artist {
+  &-page {
+
+  }
+
+  &-sidebar {
+    position: fixed;
+    padding: 80px 40px;
+    top:0 ;
+    z-index: -1;
+  }
+
+  &-name {
+    font-weight: bold;
+  }
+
+  &-timeline {
+    float: right !important;
+  }
+
+  &-card {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    img {
+      display: block;
+      margin: auto;
+    }
+
+    p {
+      font-style: italic;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: right;
+
+      span {
+        font-style: normal;
+      }
+
+    }
+
+  }
+}
+
+.headroom {
+    transition: transform 200ms linear;
+}
+
+.header-fixed {
+position: fixed;
+z-index: 10;
+right: 0;
+left: 0;
+top: 0;
+}
+
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
+.headroom--pinned {
+    display: block;
+}
+.headroom--unpinned {
+    display: none;
+}
