@@ -11,40 +11,16 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'pic.ico', :rel => 'shortcut icon', :type => 'image/x-icon" rel="shortcut icon' %>
 </head>
-<body>
-  <%# render "shared/navbar" %>
-  <%= render "shared/flashes" %>
-  <%# render 'layouts/navside' %>
+  <body>
+    <%# render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <%# render 'layouts/navside' %>
+    <%= render "shared/navbar" %>
 
-<!-- <div class="full-src"> -->
+    <%= yield %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-9">
-      <h1><%= link_to "Negentropy", home_path %></h1>
-    </div>
-    <div class="col-xs-2">
-      <h1>Search</h1>
-    </div>
-    <div class="col-xs-1">
-      <%= render "shared/navbar" %>
-    </div>
-  </div>
-</div>
+    <%= javascript_include_tag :application %>
+    <%= yield(:after_js) %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-
-      </div>
-    </div>
-  </div>
-
-  <%= yield %>
-<!-- </div> -->
-
-  <%= javascript_include_tag :application %>
-  <%= yield(:after_js) %>
-
-</body>
+  </body>
 </html>

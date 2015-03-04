@@ -1,112 +1,90 @@
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-  $(".btn").click(function(){
-    $("#myModal").modal('show');
-  });
-});
-</script>
-<style type="text/css">
-    .bs-example{
-      margin: 20px;
-    }
-</style>
-</head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top navbar-wagon" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="/"><h1>Negentropy</h1></a>
-      </div>
+<nav class="navbar navbar-default navbar-wagon" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <h1>Negentropy</h1>
+      </a>
+    </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-
-          <li><input name="artist" placeholder="Search..." id="artist" /></li>
-
-            <% content_for(:after_js) do %>
-            <script type="text/javascript">
-              $(document).ready(function() {
-                var client = new AlgoliaSearch(
-                  '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
-                  '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>');
-
-                // var template = Hogan.compile('{{{_highlightResult.email.value}}} ({{{_highlightResult.first_name.value}}} {{{_highlightResult.last_name.value}}})');
-                $('#artist').typeahead(null, {
-                  source: client.initIndex('<%= Artist.index_name %>').ttAdapter(),
-                  displayKey: 'name',
-                  templates: {
-                    suggestion: function(hit) {
-                      return hit._highlightResult.name.value;
-                    }
-                  }
-                });
-              });
-            </script>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <input name="artist" placeholder="Search..." id="artist" />
+        </li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "Collection", collection_path %>
+          </li>
+          <li class="dropdown">
+            <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
+              <%= image_tag current_user.image, class: "img-avatar" %>
+              <%= current_user.name %> <span class="caret"></span>
             <% end %>
-          <li>
-                <!-- Modal HTML -->
-          <li>
-            <div class="bs-example">
-                <% unless user_signed_in? %>
-                <a href="#" class="btn">Sign in / Sign up</a>
+            <ul class="dropdown-menu" role="menu">
+              <% if current_user.admin %>
+                <li><%= link_to "Admin", admin_root_path %></li>
+              <% end %>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Sign out" %>
                 <% end %>
-                <div id="myModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Negentropy</h4>
-                                <p>Sign in to Negentropy or create an account</p>
-                            <div class="modal-footer">
-                                <%= link_to "Connect with Facebook /", user_omniauth_authorize_path(:facebook) %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <a href="#" class="btn" data-target="#fb-login" data-toggle="modal">Sign in / Sign up</a>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-                                <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </li>
-           <% if user_signed_in? %>
-            <li><a href="/collection">Collection</a></li>
-            <% if user_signed_in? && current_user.admin %>
-            <li><%= link_to "Admin", admin_root_path %></li>
-            <% end %>
-############
 
-              <div class="dropdown">
-                <button class="btn btn-default" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                  Dropdown
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                </ul>
-              </div>
 
-#############
-            <li><%= image_tag current_user.image, class: "img-avatar" %></li>
-            <li><%= current_user.name %></li>
-            <li><%= link_to 'Sign out', destroy_user_session_path, method:'delete'%></li>
-           <% end %>
+<div id="fb-login" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Negentropy</h4>
+        <p>Sign in to Negentropy or create an account</p>
+      </div>
+      <div class="modal-body">
+        <%= link_to "Connect with Facebook /", user_omniauth_authorize_path(:facebook) %>
+        <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter) %>
+      </div>
+    </div>
+  </div>
+</div>
 
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-</body>
+
+<%= content_for(:after_js) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var client = new AlgoliaSearch(
+        '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
+        '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>');
+
+      // var template = Hogan.compile('{{{_highlightResult.email.value}}} ({{{_highlightResult.first_name.value}}} {{{_highlightResult.last_name.value}}})');
+      $('#artist').typeahead(null, {
+        source: client.initIndex('<%= Artist.index_name %>').ttAdapter(),
+        displayKey: 'name',
+        templates: {
+          suggestion: function(hit) {
+            return hit._highlightResult.name.value;
+          }
+        }
+      });
+    });
+  </script>
+<% end %>
