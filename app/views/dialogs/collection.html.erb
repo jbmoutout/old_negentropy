@@ -27,7 +27,7 @@
           <img src="<%= d.img_url %>" class="img img-tweet">
         </div>
         <p class="pad-left">
-          <%= d.text.match(/(?<=: )(.*?),/) %>
+          <%= link_to d.artwork.artist.name, artist_path(d.artwork.artist_id) %>
         </p>
       <% end %>
     </section>
