@@ -1,13 +1,13 @@
 
 <div class="padding-top"></div>
-<p class="padding-bottom padding-left">
+<p class="padding-bottom padding-left padding-extra-top">
   Collection:
 </p>
 <div class="container">
   <div class="row">
     <div class="col-xs-2 col-xs-offset-10">
       <div class="fixed">
-        <p class="padding-bottom padding-top">
+        <p class="padding-bottom ">
           <u>Artists:</u>
         </p>
         <% @dialogs.each do |d| %>
@@ -27,7 +27,7 @@
           <img src="<%= d.img_url %>" class="img img-tweet">
         </div>
         <p class="pad-left">
-          <%= d.text.match(/(?<=: )(.*?),/) %>
+          <%= link_to d.artwork.artist.name, artist_path(d.artwork.artist_id) %>
         </p>
       <% end %>
     </section>
