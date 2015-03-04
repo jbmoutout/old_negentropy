@@ -26,6 +26,12 @@
   <div class="pad-left2">
     <div class="row">
       <div class="col-xs-12">
+
+        <% @artist.artworks.each do |artwork| %>
+        <%= artwork.name %>
+        <%# artwork.dialog.img_url %>
+        <% end %>
+
         <img src="http://www.lorempixel.com/400/200/cats" alt="pretty kitty" class="img img-tweet"> 
         <div class="padding-top"></div>
         <img src="http://www.lorempixel.com/200/200/cats" alt="pretty kitty" class="img img-tweet"> 
