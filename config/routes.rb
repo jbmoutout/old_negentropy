@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :dialogs do
     put :add, to: "dialogs#add"
+    put :remove, to: "dialogs#remove"
   end
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }

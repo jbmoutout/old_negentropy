@@ -21,11 +21,16 @@
   <div class="pad-right">
     <section id="cards">
       <% @dialogs.each do |d| %>
-        <img src="<%= d.img_url %>" class="img img-tweet"> 
-          <p class="pad-left">
-            <%= link_to d.artwork.artist.name, artist_path(d.artwork.artist_id) %>
-          </p>
+        <div class="img-tweet-box">
+          <div class="overimg"></div>
+          <%= link_to "-", dialog_remove_path(:dialog_id => d.id), method: :put, class: "button-" %>
+          <img src="<%= d.img_url %>" class="img img-tweet">
+        </div>
+        <p class="pad-left">
+          <%= d.text.match(/(?<=: )(.*?),/) %>
+        </p>
       <% end %>
     </section>
   </div>
 </div>
+

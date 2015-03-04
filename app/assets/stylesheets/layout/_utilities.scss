@@ -79,6 +79,7 @@
   width: 60%;
 }
 .img-tweet-box {
+  position: relative;
   text-align: left;
   margin: 0 auto;
   margin-bottom: 7px;
@@ -100,7 +101,8 @@
   font-size: 20px;
   z-index: 1000;
   position: absolute;
-  bottom: 7px;
+  bottom: 0px;
+  right: 240px;
   width: 7%;
   padding: 10px 0;
   background: black;
@@ -110,7 +112,34 @@
   text-decoration: none;
   display: none;
 }
-
+.img-tweet-box > .overimg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFF;
+  opacity: 0;
+}
+.img-tweet-box:hover .overlay {
+  opacity: 0;
+}
+.img-tweet-box .button- {
+  font-size: 20px;
+  z-index: 1000;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 25px;
+  height: 20px;
+  padding: 10px 0;
+  background: black;
+  text-align: center;
+  color: #FFF;
+  font-family: sans-serif;
+  text-decoration: none;
+  display: none;
+}
 #origin_tweet_box {
   background: #F8F8F8;
   padding: 30px;

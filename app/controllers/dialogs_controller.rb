@@ -16,6 +16,13 @@ class DialogsController < ApplicationController
     authorize @dialog
   end
 
+  def remove
+    set_dialog
+    @dialog.unliked_by current_user
+    redirect_to collection_path
+    authorize @dialog
+  end
+
   private
 
   def set_dialog

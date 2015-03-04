@@ -17,6 +17,29 @@
 //         $(this).next().slideDown();
 //       })
 
+$(document).ready(function() {
+  $('.overlay').on('mouseenter', function() {
+        $(this).next().slideDown(1);
+      })
+
+      $('.img-tweet-box').on('mouseleave', function() {
+        $(this).children('a').slideUp(1);
+      });
+  $('.overimg').on('mouseenter', function() {
+        $(this).next().slideDown(1);
+      })
+
+      $('.overimg').on('mouseleave', function() {
+        $(this).children('a').slideUp(1);
+      });
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > display_backtotop) {
+      $(".scroll-top").fadeIn();
+    } else {
+      $(".scroll-top").fadeOut();
+    }
+  });
+
 //       $('.img-tweet-box').on('mouseleave', function() {
 //         $(this).children('a').slideUp();
 //       });
@@ -30,6 +53,7 @@
 
 //   $(document).on("click", ".scroll-top", function(e) {
 //     $("html, body").animate({scrollTop: 0});
+
 
 //     e.preventDefault();
 //   });
