@@ -1,58 +1,49 @@
 /* -------------------------------------
  * Colors & Fonts
  * ------------------------------------- */
-$navbar-color: white;
-$navbar-hover-color: white;
-$navbar-font-family: $navbar-font;
-$navbar-font-size: 14px;
-$navbar-text-transform: capitalize;
-$navbar-font-weight: 100;
-$navbar-letter-spacing: 1.3px;
-$navbar-font-family: $navbar-font;
-$navbar-bg: black;
+$navbar-color: #737373;
+$navbar-hover-color: $yellow;
+$navbar-font-family: $header-font;
+$navbar-bg: #f6f6f6;
 
 /* -------------------------------------
  * Box model
  * ------------------------------------- */
-$navbar-height: 30px;
+$navbar-height: 50px;
 $navbar-vertical-padding: 5px;
-$navbar-horizontal-padding: 10px;
+$navbar-horizontal-padding: 20px;
 $navbar-border-bottom-width: 1px;
-$navbar-border-bottom-color: white;
+$navbar-border-bottom-color: #737373;
 
 /* -------------------------------------
  * Navbar button
  * ------------------------------------- */
-$navbar-btn-height: 10px;
-$navbar-btn-bg: white;
+$navbar-btn-height: 40px;
+$navbar-btn-bg: lightgrey;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
 $navbar-btn-radius: 2px;
 
 /* -------------------------------------
-* Navbar profile picture
-* ------------------------------------- */
-$navbar-profile-radius: 0;
+ * Navbar profile picture
+ * ------------------------------------- */
+$navbar-profile-radius: 50%;
 $navbar-profile-border-color: white;
-$navbar-profile-border-width: 0.5px;
+$navbar-profile-border-width: 2px;
 
-// penser à modifier la coleur du hover qui bug et supprimer qq elements dans
- // .navbar-nav > li > a, aussi pour diminuer la taille de la navbar
-
-.navbar-neg {
+/* -------------------------------------
+ * SCSS code
+ * ------------------------------------- */
+.navbar-wagon {
   background: $navbar-bg;
   font-family: $navbar-font-family;
   border: none;
-  font-size: $navbar-font-size;
-  text-transform: $navbar-text-transform;
-  font-weight: $navbar-font-weight;
-  letter-spacing: $navbar-letter-spacing;
+  font-weight: 400;
   padding-left: $navbar-horizontal-padding;
   padding-right: $navbar-horizontal-padding;
   border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
   min-height: 0;
   transition: background 0.4s ease;
-
 
   .navbar-nav > li > a,
   .navbar-nav > .open > a,
@@ -64,83 +55,112 @@ $navbar-profile-border-width: 0.5px;
     padding-top: $navbar-vertical-padding;
     padding-bottom: $navbar-vertical-padding;
     background-color: transparent;
-    -webkit-transition: all 0.3s ease;
-       -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-            transition: all 0.3s ease;
   }
 
   .navbar-nav > li > a:hover,
   .navbar-nav > .open > a:hover {
-    color: black;
-    background-color: white;
+    color: $navbar-hover-color;
+    background-color: transparent;
   }
 
+  .navbar-brand,
+  .navbar-brand:hover {
+    outline: none;
+    color: $navbar-color;
+    padding-top: $navbar-vertical-padding;
+    padding-bottom: $navbar-vertical-padding;
+  }
+
+  .navbar-nav > li > a.btn {
+    line-height: $navbar-btn-height;
+    padding: 0 $navbar-btn-horizontal-padding;
+    color: $navbar-btn-color;
+    border-radius: $navbar-btn-radius;
+    margin-top: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
+    font-weight: bold;
+    background-color: $navbar-btn-bg;
+    font-size: 12px;
+    &:hover{
+      background-color: darken($navbar-btn-bg, 30%);
+    }
+  }
+
+  .navbar-brand img, .navbar-brand svg {
+    height: $navbar-height;
+    padding: 0px;
+  }
+
+  .img-avatar{
+    border: $navbar-profile-border-width solid $navbar-profile-border-color;
+    box-shadow: 0 0 2px rgb(200, 200, 200);
+    height: $navbar-height - (2 * $navbar-profile-border-width);
+    margin-right: 10px;
+    border-radius: $navbar-profile-radius;
+  }
+
+  .navbar-toggle {
+    border-color: #dddddd;
+    width: 45px;
+    background: transparent;
+  }
+
+  .navbar-nav > li > .dropdown-menu{
+    border-radius: 0;
+    margin-top: 10px;
+  }
+
+  .navbar-nav > li > .dropdown-menu:before{
+    position: absolute;
+    background: white;
+    height: 10px;
+    width: 10px;
+    content: "\00a0";
+    display: block;
+    left: 50%;
+    margin-left: -5px;
+    top: -5px;
+    transform: rotate(45deg);
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    z-index: -1;
+  }
 }
 
-.navbar-nav > li {
-  color: black;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 10px;
+/* -------------------------------------
+ * Navbar profile picture
+ * ------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  .navbar-wagon {
+    .navbar-brand img, .navbar-brand svg {
+      height: 50px;
+    }
+    .navbar-brand, .navbar-brand:hover
+     {
+      display: block;
+      color: $navbar-color;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
 }
 
-.navbar-nav > li > .dropdown-menu{
-  border-radius: 0;
-  margin-top: 10px;
-}
-.navbar-nav > li > .dropdown-menu:before{
-  position: absolute;
-  background: white;
-  height: 10px;
-  width: 10px;
-  content: "\00a0";
-  display: block;
-  left: 50%;
-  margin-left: -5px;
-  top: -5px;
-  transform: rotate(45deg);
-  border-top: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
-  z-index: -1;
+/* ------------ YOUR TWISTS --------------- */
+.navbar-brand h1 {
+  padding: 0;
+  margin: 0;
+  line-height: $navbar-height;
 }
 
-.img-avatar{
-  border: $navbar-profile-border-width solid $navbar-profile-border-color;
-  box-shadow: 0 0 1px rgb(200, 200, 200);
-  height: 35px;
-  margin-right: 10px;
-  margin-top: -4px;
-  border-radius: $navbar-profile-radius;
 
+$input-height: 35px;
+
+.navbar-wagon .twitter-typeahead {
+  top: $navbar-vertical-padding + (($navbar-height - $input-height) / 2);
+  right: 20px;
+  input {
+    height: $input-height;
+    border: none;
+  }
 }
 
-// #searchbar {
-//   margin-top: 10px;
-//   margin-right: 30px;
-//   padding-left: 100px;
-//   vertical-align: left;
-//   border: none;
-//   height: 35px;
-// }
-
-#artist {
-  // margin-top: 10px;
-  // margin-right: 30px;
-  // padding-left: 100px;
-  // vertical-align: left;
-  border: none;
-  // height: 35px;
-}
-
-.search_function em {
-  background-color: yellow;
-  font-style: normal;
-}
-
-#login_button {
-  height: 20px;
-  margin-right: 10px;
-}
-#search {
-  margin: 25px;
-}

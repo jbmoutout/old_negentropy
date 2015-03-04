@@ -3,7 +3,6 @@
 //= require bootstrap-sprockets
 //= require algolia/algoliasearch.min
 //= require algolia/typeahead.jquery
-
 //= require_tree ./app
 
 
