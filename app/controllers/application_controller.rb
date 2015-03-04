@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def after_sign_up_path_for(resource)
+    if resource.provider == 'twitter' && resource.email.blank?
+      edit_account_email_path
+    else
+      signed_in_root_path(resource)
+    end
+  end
+
   def user_not_authorized
     flash[:error] = I18n.t('controllers.application.user_not_authorized', default: "You can't access this page.")
     redirect_to(root_path)
@@ -32,6 +40,4 @@ class ApplicationController < ActionController::Base
   def pages_controller?
     controller_name == "pages"  # Brought by the `high_voltage` gem
   end
-
-
 end
