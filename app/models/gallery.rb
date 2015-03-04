@@ -16,6 +16,7 @@ class Gallery < ActiveRecord::Base
       artist_name = artist['artist_list']['text']
       artist      = Artist.where(name: artist_name).first_or_create!
 
+
       unless gallery.artists.where(id: artist.id).exist?
         gallery.artists << artist
       end

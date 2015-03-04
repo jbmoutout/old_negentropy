@@ -1,50 +1,24 @@
 <div class="padding-top"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="fixed">
-          <h1class="padding-bottom padding-left">
-            <u><%= @artist.name  %></u><br>
-            <p><%= @artist.description %></p>
-          </h1>
-          <div class="padding-top"></div>
-          <p class="padding-bottom">
-            Galleries:
-          </p>
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-          <div class="padding-top"></div>
-          <p class="padding-bottom">
-            Read:
-          </p>
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-      </div>
-    </div>
+<div class="container artist-page">
+  <div class="artist-sidebar">
+    <p class='artist-name'><%= @artist.name  %></p><br>
+    <p><%= @artist.description %></p>
+    <p>Galleries</p>
+    <p>Reads</p>
   </div>
+  <div class='artist-timeline'>
 
-  <div class="pad-left2">
-    <div class="row">
+    <% @artist.artworks.each_with_index do |artwork, index| %>
+      <% index = [artwork.name, artwork.date] %>
+
+      <% artwork.dialogs.each do |a| %>
+        <div class="artist-card">
+          <img src=<%= a.img_url %>>
+          <p><%= index[0].gsub('"', '') %>, <span><%= index[1] %></span></p>
 
 
-        <% @artist.artworks.each do |artwork| %>
-        <div class="padding-bottom">
-          <div class="col-xs-4-offset-2">
-          <%= artwork.name %>,
-          <%= artwork.date %>
-          </div>
-           <% artwork.dialogs.each do |a| %>
-          <div class="col-xs-4">
-              <div class="padding-bottom"><img src=<%= a.img_url %>></div>
-          </div>
-            <% end %>
-        <% end %>
-
-   
-      </div>
-    </div>
-    </section>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

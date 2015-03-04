@@ -29,7 +29,7 @@ $navbar-btn-radius: 2px;
  * ------------------------------------- */
 $navbar-profile-radius: 0%;
 $navbar-profile-border-color: transparent;
-$navbar-profile-border-width: 1px;
+$navbar-profile-border-width: 0px;
 
 /* -------------------------------------
  * SCSS code
@@ -39,9 +39,9 @@ $navbar-profile-border-width: 1px;
   font-family: $navbar-font-family;
   border: none;
   font-weight: 400;
+  border: none;
   padding-left: $navbar-horizontal-padding;
   padding-right: $navbar-horizontal-padding;
-  border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
   min-height: 0;
   transition: background 0.4s ease;
 
