@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-
+source "https://rails-assets.org"
 ruby "2.2.0"
 
 gem 'activeadmin', github: 'activeadmin'
@@ -20,7 +20,7 @@ gem "aws-sdk"
 gem 'rest-client', '~> 1.7.3'
 
 gem 'acts_as_votable', '~> 0.10.0'
-
+gem 'rails-assets-headroom.js'
 gem "jquery-rails"
 gem "sass-rails", "~> 5.0"
 gem "uglifier"
