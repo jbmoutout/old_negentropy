@@ -3,8 +3,18 @@
   <div class="artist-sidebar">
     <p class='artist-name'><%= @artist.name  %></p><br>
     <p><%= @artist.description %></p>
-    <p>Galleries</p>
-    <p>Reads</p>
+    <% if @artist.galleries.present? %>
+    <p>Galleries:</p>
+    <% end %>
+    <% @artist.galleries.each do |gallery| %>
+      <p class="margin-left">
+        <%= gallery.name %>
+      </p>
+    <% end %>
+
+    <!-- <p class="margin-top">Reads:</p>
+    <p class="margin-top">Related artists:</p> -->
+
   </div>
   <div class='artist-timeline'>
 
