@@ -1,55 +1,54 @@
-<header class='headroom header-fixed'>
-  <nav class="navbar navbar-default navbar-wagon" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">
-          <h1>Negentropy</h1>
-        </a>
-      </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-default navbar-wagon navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <h1>Negentropy</h1>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <input name="artist" placeholder="Search..." id="artist" />
+        </li>
+        <% if user_signed_in? %>
           <li>
-            <input name="artist" placeholder="Search..." id="artist" />
+            <%= link_to "Collection", collection_path %>
           </li>
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to "Collection", collection_path %>
-            </li>
-            <li class="dropdown">
-              <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
-                <%= image_tag current_user.image, class: "img-avatar" %>
-                <%= current_user.name %> <span class="caret"></span>
+          <li class="dropdown">
+            <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
+              <%= image_tag current_user.image, class: "img-avatar" %>
+              <%= current_user.name %> <span class="caret"></span>
+            <% end %>
+            <ul class="dropdown-menu" role="menu">
+              <% if current_user.admin %>
+                <li><%= link_to "Admin", admin_root_path %></li>
               <% end %>
-              <ul class="dropdown-menu" role="menu">
-                <% if current_user.admin %>
-                  <li><%= link_to "Admin", admin_root_path %></li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Sign out" %>
                 <% end %>
-                <li>
-                  <%= link_to destroy_user_session_path, method: :delete do %>
-                    <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Sign out" %>
-                  <% end %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li>
-              <a href="#" data-target="#fb-login" data-toggle="modal">Sign in / Sign up</a>
-            </li>
-          <% end %>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-</header>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <a href="#" data-target="#fb-login" data-toggle="modal">Sign in / Sign up</a>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 
 
@@ -73,8 +72,15 @@
 
 <%= content_for(:after_js) do %>
   <script type="text/javascript">
-    $('.headroom').headroom()
     $(document).ready(function() {
+      $(window).on('scroll', function() {
+        if($(this).scrollTop() > 60) {
+          $('nav').slideUp('slow');
+        } else {
+          $('nav').slideDown('slow');
+        }
+      })
+
       var client = new AlgoliaSearch(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>');
