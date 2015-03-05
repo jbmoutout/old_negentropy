@@ -12,7 +12,7 @@
                   • <%= d.origin_date.to_date %></p>
                 <% end %>
             </div>
-              <p class="tweet-info"><%= d.origin_text %></p>
+              <p class="tweet-info"><%= d.origin_text.gsub!(/(?:f|ht)tps?:\/[^\s]+/, '') %></p>
           </div>
           <div class="row">
             <div class="col-xs-6">
