@@ -2,7 +2,7 @@
  * Colors & Fonts
  * ------------------------------------- */
 $navbar-color: #737373;
-$navbar-hover-color: $yellow;
+$navbar-hover-color: grey;
 $navbar-font-family: $header-font;
 $navbar-bg: white;
 
@@ -52,7 +52,7 @@ $navbar-profile-border-width: 0px;
   .navbar-nav > li > a:focus,
   .navbar-nav > .open > a:focus {
     outline: none;
-    color: $navbar-color;
+    color: black;
     line-height: $navbar-height;
     padding-top: $navbar-vertical-padding;
     padding-bottom: $navbar-vertical-padding;
@@ -68,7 +68,7 @@ $navbar-profile-border-width: 0px;
   .navbar-brand,
   .navbar-brand:hover {
     outline: none;
-    color: $navbar-color;
+    color: black;
     padding-top: $navbar-vertical-padding;
     padding-bottom: $navbar-vertical-padding;
   }
@@ -76,7 +76,7 @@ $navbar-profile-border-width: 0px;
   .navbar-nav > li > a.btn {
     line-height: $navbar-btn-height;
     padding: 0 $navbar-btn-horizontal-padding;
-    color: $navbar-btn-color;
+    color: black;
     border-radius: $navbar-btn-radius;
     margin-top: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
     font-weight: bold;
@@ -140,7 +140,7 @@ $navbar-profile-border-width: 0px;
     .navbar-brand, .navbar-brand:hover
      {
       display: block;
-      color: $navbar-color;
+      color: grey;
       padding-top: 0;
       padding-bottom: 0;
     }
