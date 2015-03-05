@@ -21,6 +21,13 @@ class ArtistsController < ApplicationController
 
     @related_artists.uniq!
 
+    @related_artworks = []
+
+    @related_artists.each do |artist|
+       @related_artworks += artist.artworks[0]
+     end
+    end
+
     authorize @artist
   end
 

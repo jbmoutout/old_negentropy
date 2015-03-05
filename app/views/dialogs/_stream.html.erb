@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <% Dialog.order(origin_date: :desc).each do |d| %>
+      <% @dialogs.each do |d| %>
         <div class="stream-item-container">
 
           <div class="row" id="origin_tweet_box">
@@ -32,6 +32,7 @@
                   <div class="img-tweet-box">
                       <div class="overlay"></div>
                       <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+
 
 
                       <img src="<%= d.img_url %>" class="img img-tweet">
