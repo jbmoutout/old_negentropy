@@ -20,6 +20,7 @@ class ArtistsController < ApplicationController
     end
 
     @related_artists.uniq!
+    @related_artists.reject! { |artist| artist == @artist }
 
     @related_artworks = []
 
