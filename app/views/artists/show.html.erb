@@ -12,8 +12,14 @@
       </p>
     <% end %>
 
-    <!-- <p class="margin-top">Reads:</p>
-    <p class="margin-top">Related artists:</p> -->
+    <!-- <p class="margin-top">Reads:</p> -->
+    <p class="margin-top">Related artists:</p>
+    <ul class="list-unstyled">
+    <% @related_artists.each do |related_artist| %>
+      <li><%= link_to related_artist.name, artist_path(@artist) %></li>
+    <% end %>
+    </ul>
+
 
   </div>
   <div class='artist-timeline'>
