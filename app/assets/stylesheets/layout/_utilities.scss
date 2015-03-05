@@ -19,6 +19,11 @@
 .padding-top {
   padding-top: 10px;
 }
+
+.padding-top-home {
+  padding-top: 100px;
+}
+
 .padding-right {
   padding-right: 5px;
 }
@@ -76,7 +81,7 @@
 }
 
 .img-origin-tweet {
-  width: 60%;
+  width: 30%;
 }
 .img-tweet-box {
   position: relative;
@@ -141,13 +146,13 @@
   display: none;
 }
 #origin_tweet_box {
-  background: #F8F8F8;
-  padding: 30px;
+  padding-top: 30px;
   margin-bottom: 20px;
 
 }
 
 #origin_tweet_profil {
+  padding-top: 10px;
   margin-left: -12px;
   // margin-top: -5px;
   font-size: 12px;

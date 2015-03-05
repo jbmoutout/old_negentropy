@@ -7,8 +7,22 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist = Artist.find(params[:id])
-    authorize @artist
+    set_artist
 
+    @related_artists = Artist.limit(4).joins(:galleries)
+
+    authorize @related_artists
+
+    authorize @artist
+  end
+
+  def related_artists
+
+  end
+
+  private
+
+  def set_artist
+    @artist = Artist.find(params[:id])
   end
 end

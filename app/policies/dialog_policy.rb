@@ -7,6 +7,10 @@ class DialogPolicy < ApplicationPolicy
     true
   end
 
+  def stream?
+    true
+  end
+
   def collection?
     true
   end
