@@ -21,6 +21,10 @@ class ArtistsController < ApplicationController
 
     @related_artists.uniq!
 
+    @related_artworks = []
+
+
+
     authorize @artist
   end
 

@@ -1,8 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
+<<<<<<< HEAD
       <% Dialog.order(origin_date: :desc).each do |d| %>
         <div class="stream-item-container border-bot">
+=======
+      <% @dialogs.each do |d| %>
+        <div class="stream-item-container">
+
+>>>>>>> jeudi_buggy
           <div class="row" id="origin_tweet_box">
             <div class="col-xs-12" id="">
               <img src="<%= d.origin_profilpic_url %>" class="img img-origin-tweet" id="img-tweetos" >
@@ -18,9 +24,28 @@
             <div class="col-xs-6">
               <div class="img-tweet-box">
                 <div class="overlay"></div>
-                  <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+                  <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put , class: "button" %>
                 <img src="<%= d.img_url %>" class="img img-tweet">
               </div>
+<<<<<<< HEAD
+=======
+          </div>
+
+                <div class="col-xs-2">
+                  <div class="img-tweet-box">
+                      <div class="overlay"></div>
+                      <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+
+
+
+                      <img src="<%= d.img_url %>" class="img img-tweet">
+
+                  </div>
+                </div>
+          </div>
+
+          <div class="row">
+>>>>>>> jeudi_buggy
               <div class="col-xs-12 col-sm-10">
                 <p>
                   <%= link_to d.artwork.artist.name, artist_path(d.artwork.artist_id) %>,

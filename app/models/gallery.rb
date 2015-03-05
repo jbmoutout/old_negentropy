@@ -8,7 +8,7 @@ class Gallery < ActiveRecord::Base
   #################################################################################
 
   def self.import
-    response = RestClient.get 'https://www.kimonolabs.com/api/dvyg0sgm?apikey=u6sMzW1WypgPUjpDTCTuVrAaqqPpomOZ'
+    response = RestClient.get "https://www.kimonolabs.com/api/3imtd2bc?apikey=u6sMzW1WypgPUjpDTCTuVrAaqqPpomOZ"
 
     response_hash = JSON.parse(response.body)
 
