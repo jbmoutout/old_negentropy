@@ -6,13 +6,13 @@
           <div class="row" id="origin_tweet_box">
             <div class="col-xs-12" id="">
               <img src="<%= d.origin_profilpic_url %>" class="img img-origin-tweet" id="img-tweetos" >
-              <p><strong><%= d.origin_user %></strong><br>
+              <p class="tweet-profil"><strong><%= d.origin_user %></strong><br>
                 @<%= d.origin_screen_name %>
                 <% if d.origin_date != nil %>
                   • <%= d.origin_date.to_date %></p>
                 <% end %>
             </div>
-              <p><%= d.origin_text %></p>
+              <p class="tweet-info"><%= d.origin_text %></p>
           </div>
           <div class="row">
             <div class="col-xs-6">
