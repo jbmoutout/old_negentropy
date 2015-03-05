@@ -7,11 +7,19 @@ class ArtistsController < ApplicationController
   end
 
   def show
+
     set_artist
+    @related_artists = []
 
-    @related_artists = Artist.limit(4).joins(:galleries)
+    if @artist.galleries.any?
+      @galleries = @artist.galleries
 
-    authorize @related_artists
+      @galleries.each do |gallery|
+        @related_artists += gallery.artists.joins(:galleries).distinct
+      end
+    end
+
+    @related_artists.uniq!
 
     authorize @artist
   end

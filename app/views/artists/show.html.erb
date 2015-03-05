@@ -13,10 +13,12 @@
     <% end %>
 
     <!-- <p class="margin-top">Reads:</p> -->
-    <p class="margin-top">Related artists:</p>
-    <ul class="list-unstyled">
-    <% @related_artists.each do |related_artist| %>
-      <li><%= link_to related_artist.name, artist_path(@artist) %></li>
+    <% if @related_artists != nil %>
+      <p class="margin-top">Related artists:</p>
+      <ul class="list-unstyled">
+      <% @related_artists[0..3].each do |related_artist| %>
+        <li><%= link_to related_artist.name, artist_path(related_artist.id) %></li>
+      <% end%>
     <% end %>
     </ul>
 

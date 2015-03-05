@@ -95,7 +95,7 @@ $navbar-profile-border-width: 0px;
   .img-avatar{
     border: $navbar-profile-border-width solid $navbar-profile-border-color;
     box-shadow: 0 0 2px rgb(200, 200, 200);
-    height: $navbar-height - (2 * $navbar-profile-border-width);
+    height: $navbar-height - (2 * $navbar-profile-border-width) - 10px;
     margin-right: 10px;
     border-radius: $navbar-profile-radius;
   }

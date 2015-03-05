@@ -26,32 +26,16 @@
                     <img src="<%= d.img_url %>" class="img img-tweet">
                 </div>
               </div>
-              <div class="col-xs-2">
-                <div class="img-tweet-box">
-                    <div class="overlay"></div>
-                    <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
-                     <% Dialog.limit(1).order('RANDOM()').each do |d| %>
-                    <img src="<%= d.img_url %>" class="img img-tweet">
-                    <% end %>
-                </div>
-              </div>
-               <div class="col-xs-2">
-                <div class="img-tweet-box">
-                    <div class="overlay"></div>
-                    <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
-                     <% Dialog.limit(1).order('RANDOM()').each do |d| %>
-                    <img src="<%= d.img_url %>" class="img img-tweet">
-                    <% end %>
-                  </div>
-                </div>
+          </div>
+
                 <div class="col-xs-2">
                   <div class="img-tweet-box">
                       <div class="overlay"></div>
                       <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
 
-                       <% Dialog.limit(1).order('RANDOM()').each do |d| %>
+
                       <img src="<%= d.img_url %>" class="img img-tweet">
-                      <% end %>
+
                   </div>
                 </div>
           </div>
