@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   resources :artists, only: [:index, :show]
 
   get "/collection", to: "dialogs#collection"
+
+  root to:'dialog#index'
 end

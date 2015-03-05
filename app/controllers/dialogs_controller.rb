@@ -1,5 +1,6 @@
 class DialogsController < ApplicationController
   skip_after_action :verify_authorized, only: :collection
+  skip_before_action :authenticate_user!
   def index
     @dialogs = policy_scope(Dialog)
     @dialogs = Dialog.all.order("origin_date DESC")
