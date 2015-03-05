@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
+  get '/', to: 'dialogs#index'
 
   resources :dialogs do
     put :add, to: "dialogs#add"
     put :remove, to: "dialogs#remove"
   end
+
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   devise_scope :user do
