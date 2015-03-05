@@ -3,16 +3,27 @@ class DialogsController < ApplicationController
   def index
     @dialogs = policy_scope(Dialog)
     @artists = Artist.all
+
   end
 
   def collection
     @dialogs = current_user.find_voted_items
   end
 
-  def related_artworks
-    @related_artworks = Artworks.limit(4).joins(:galleries)
-    render :layout => 'home'
-  end
+  def related_artists
+    @related_artists = []
+
+    if @artist.galleries.any?
+      @galleries = @artist.galleries
+
+      @galleries.each do |gallery|
+        @related_artists += gallery.artists.joins(:galleries).distinct
+      end
+    end
+
+    @related_artists.uniq!
+
+    authorize @artist
 
   def add
     set_dialog

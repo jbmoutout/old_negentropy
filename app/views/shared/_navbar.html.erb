@@ -73,14 +73,6 @@
 <%= content_for(:after_js) do %>
   <script type="text/javascript">
     $(document).ready(function() {
-      $(window).on('scroll', function() {
-        if($(this).scrollTop() > 60) {
-          $('nav').slideUp('slow');
-        } else {
-          $('nav').slideDown('slow');
-        }
-      })
-
       var client = new AlgoliaSearch(
         '<%= ENV['ALGOLIA_APPLICATION_ID'] %>',
         '<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>');
