@@ -1,62 +1,72 @@
-<div class="scroll-top">Back to top</div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8">
-        <% Dialog.all.each do |d| %>
-          <div class="stream-item-container">
-            <div class="stream-item">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% Dialog.order(origin_date: :desc).each do |d| %>
+        <div class="stream-item-container">
 
-              <div class="row" id="origin_tweet_box">
-                <div class="col-xs-1">
-                  <img src="<%= d.origin_profilpic_url %>" class="img img-origin-tweet" >
-                </div>
-                <div class="col-xs-11" id="origin_tweet_profil">
-
-                  <p><strong><%= d.origin_user %></strong><br>
-                  @<%= d.origin_screen_name %>
-                  <% if d.origin_date != nil %>
+          <div class="row" id="origin_tweet_box">
+            <div class="col-xs-1">
+              <img src="<%= d.origin_profilpic_url %>" class="img img-origin-tweet" >
+            </div>
+            <div class="col-xs-11" id="origin_tweet_profil">
+              <p><strong><%= d.origin_user %></strong><br>
+                @<%= d.origin_screen_name %>
+                <% if d.origin_date != nil %>
                   • <%= d.origin_date.to_date %></p>
-                  <% end %>
+                <% end %>
+            </div>
+              <p><%= d.origin_text %></p>
+          </div>
 
+          <div class="row">
+             <div class="col-xs-6 col">
+                <div class="img-tweet-box">
+                    <div class="overlay"></div>
+                      <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+                    <img src="<%= d.img_url %>" class="img img-tweet">
                 </div>
-
-                  <p><%= d.origin_text %></p>
               </div>
-
-
-
-
-              <div class="row">
-                <div class="col-xs-12 col-sm-10">
-
-                  <div class="img-tweet-box">
+              <div class="col-xs-2">
+                <div class="img-tweet-box">
                     <div class="overlay"></div>
                     <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+                     <% Dialog.limit(1).order('RANDOM()').each do |d| %>
                     <img src="<%= d.img_url %>" class="img img-tweet">
-                  </div>
-                </div>
-
-                <div class="col-xs-2">
-
+                    <% end %>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-xs-12 col-sm-10">
+               <div class="col-xs-2">
+                <div class="img-tweet-box">
+                    <div class="overlay"></div>
+                    <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+                     <% Dialog.limit(1).order('RANDOM()').each do |d| %>
+                    <img src="<%= d.img_url %>" class="img img-tweet">
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-xs-2">
+                  <div class="img-tweet-box">
+                      <div class="overlay"></div>
+                      <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+
+                       <% Dialog.limit(1).order('RANDOM()').each do |d| %>
+                      <img src="<%= d.img_url %>" class="img img-tweet">
+                      <% end %>
+                  </div>
+                </div>
+          </div>
+
+          <div class="row">
+              <div class="col-xs-12 col-sm-10">
                   <p>
-
-
                     <%= link_to d.artwork.artist.name, artist_path(d.artwork.artist_id) %>,
-
                     <%= d.artwork.name %>,
                     <%= d.artwork.date %>
                   </p>
-                </div>
               </div>
-
-
           </div>
         <% end %>
       </div>
-
     </div>
+  </div>
 </div>

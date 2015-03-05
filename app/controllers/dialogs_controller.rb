@@ -9,6 +9,11 @@ class DialogsController < ApplicationController
     @dialogs = current_user.find_voted_items
   end
 
+  def related_artworks
+    @related_artworks = Artworks.limit(4).joins(:galleries)
+    render :layout => 'home'
+  end
+
   def add
     set_dialog
     @dialog.liked_by current_user
@@ -22,6 +27,8 @@ class DialogsController < ApplicationController
     redirect_to collection_path
     authorize @dialog
   end
+
+
 
   private
 
