@@ -2,15 +2,15 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_filter :authenticate_user!, unless: :pages_controller?
+  before_filter :authenticate_user!
 
     class << self
         attr_accessor :twitter
     end
 
   include Pundit
-  after_action :verify_authorized, except: :index, unless: :devise_or_pages_or_admin_controller?
-  after_action :verify_policy_scoped, only: :index, unless: :devise_or_pages_or_admin_controller?
+  after_action :verify_authorized, except: :index, unless: :devise_or_admin_controller?
+  after_action :verify_policy_scoped, only: :index, unless: :devise_or_admin_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -29,15 +29,11 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
-  def devise_or_pages_or_admin_controller?
-    devise_controller? || pages_controller? || admin_controller?
+  def devise_or_admin_controller?
+    devise_controller? || admin_controller?
   end
 
   def admin_controller?
     controller_path.start_with?('admin/')
-  end
-
-  def pages_controller?
-    controller_name == "pages"  # Brought by the `high_voltage` gem
   end
 end

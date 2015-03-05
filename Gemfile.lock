@@ -147,7 +147,6 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (3.4.0)
-    high_voltage (2.2.1)
     hike (1.2.3)
     http (0.6.3)
       http_parser.rb (~> 0.6.0)
@@ -351,7 +350,6 @@ DEPENDENCIES
   devise-i18n-views
   figaro
   font-awesome-sass
-  high_voltage
   jquery-rails
   letter_opener
   omniauth-facebook
