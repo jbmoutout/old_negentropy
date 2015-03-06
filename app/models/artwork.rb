@@ -13,7 +13,13 @@ class Artwork < ActiveRecord::Base
   #   @dialog = dialog
   # end
 
+######################################################################################
+##IN RAILS C: $ dialogs = Dialog.all THEN $ dialogs.each { |d| Artwork.save_tweets(d) } ##
+######################################################################################
+
+
   def self.save_tweets(dialog)
+    if dialog.text != nil
       artist_name = dialog.text.match(/(?<=: )(.*?),/)
       artist_name &&= artist_name[1]
       artist = Artist.where(name: artist_name).first_or_create!
@@ -27,9 +33,11 @@ class Artwork < ActiveRecord::Base
         artwork.date = date
       end
 
+
       artwork.dialogs << dialog
 
       artwork
+    end
   end
 
 
