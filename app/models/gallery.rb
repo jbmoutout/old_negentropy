@@ -4,11 +4,11 @@ class Gallery < ActiveRecord::Base
   has_and_belongs_to_many :artists
 
   #################################################################################
-  ##IN RAILS C: REPLACE @url WITH THE PROPER KIMONO API GALLERY URL ' ' INLCUDED ##
+  ##IN RAILS C: REPLACE uri WITH THE PROPER KIMONO API GALLERY URL ' ' INLCUDED ##
   #################################################################################
 
-  def self.import
-    response = RestClient.get "https://www.kimonolabs.com/api/cvwdukf2?apikey=u6sMzW1WypgPUjpDTCTuVrAaqqPpomOZ"
+  def self.import(uri)
+    response = RestClient.get (uri)
 
     response_hash = JSON.parse(response.body)
 
