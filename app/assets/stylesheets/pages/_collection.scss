@@ -15,11 +15,11 @@
   line-height: 0;
   padding-left: 5px;
 
-  -webkit-column-count: 3;
+  -webkit-column-count: 2;
   -webkit-column-gap:   0px;
-  -moz-column-count:    3;
+  -moz-column-count:    2;
   -moz-column-gap:      0px;
-  column-count:         3;
+  column-count:         2;
   column-gap:           0px;
   font-size: 14px;
 }
@@ -28,21 +28,25 @@
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
-  padding: 20px;
+  padding: 10px;
+}
+
+.suite {
+  padding-left: 464px;
 }
 
 @media (max-width: 1200px) {
   #cards {
-  -moz-column-count:    3;
-  -webkit-column-count: 3;
-  column-count:         3;
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
   }
 }
 @media (max-width: 1000px) {
   #cards {
-  -moz-column-count:    3;
-  -webkit-column-count: 3;
-  column-count:         3;
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
   }
 }
 @media (max-width: 800px) {

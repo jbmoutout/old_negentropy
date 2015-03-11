@@ -17,6 +17,7 @@ gem "pundit"
 gem "paperclip"
 gem "aws-sdk"
 gem 'rest-client', '~> 1.7.3'
+gem 'wikidata'
 
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'rails-assets-headroom.js'

@@ -16,16 +16,20 @@ class Gallery < ActiveRecord::Base
     gallery       = Gallery.where(name: gallery_name).first_or_create!
 
     response_hash['results']['collection1'].each do |artist|
+
       artist_name = artist['property1']['text']
+
+      temp = artist_name.dup
+      artist_name.clear
+      artist_name << temp.split.map(&:capitalize!).join(' ')
+
       artist      = Artist.where(name: artist_name).first_or_create!
 
       unless gallery.artists.where(id: artist.id).exists?
         gallery.artists << artist
       end
     end
-
   end
-
   #################################################################################
   #################################################################################
   #################################################################################

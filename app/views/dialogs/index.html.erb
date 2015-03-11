@@ -5,15 +5,16 @@
       <% @dialogs.each do |d| %>
         <div class="stream-item-container border-bot">
           <div class="row" id="origin_tweet_box">
-            <div class="col-xs-12" id="">
+            <div class="col-xs-6" id="">
               <img src="<%= d.origin_profilpic_url %>" class="img img-origin-tweet" id="img-tweetos" >
               <p class="tweet-profil"><strong><%= d.origin_user %></strong><br>
                 @<%= d.origin_screen_name %>
                 <% if d.origin_date != nil %>
                   • <%= d.origin_date.to_date %></p>
                 <% end %>
-            </div>
+
               <p class="tweet-info"><%= d.origin_text.gsub(/(?:f|ht)tps?:\/[^\s]+/, '') %></p>
+            </div>
           </div>
           <div class="row">
             <div class="col-xs-6">
@@ -30,12 +31,17 @@
                 </p>
               </div>
             </div>
+            <% unless get_related_url(d.id).empty? %>
+              <div class="suite">
+                <p>suite de l'exposition:</p>
+              </div>
+            <% end %>
             <section id="cards">
-
               <% related_dialogs = get_related_url(d.id) %>
               <% related_dialogs.each do |dialog| %>
                 <% unless dialog.img_url == d.img_url  %>
                 <%= link_to artist_path(dialog.artwork.artist_id) do %>
+
                   <%= image_tag dialog.img_url %>
                 <% end %>
 

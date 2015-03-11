@@ -79,7 +79,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .img-tweet {
-  width: 60%;
+  width: 90%;
   text-align: center;
 
 }
@@ -111,8 +111,8 @@
   z-index: 1000;
   position: absolute;
   bottom: 0px;
-  right: 220px;
-  width: 7%;
+  right: 50px;
+  width: 10%;
   padding: 10px 0;
   background: black;
   text-align: center;
@@ -121,6 +121,7 @@
   text-decoration: none;
   display: none;
 }
+
 .img-tweet-box > .overimg {
   position: absolute;
   top: 0;
@@ -150,7 +151,7 @@
   display: none;
 }
 #origin_tweet_box {
-  padding-top: 30px;
+  // padding-top: 30px;
   margin-bottom: 20px;
 
 }
@@ -169,7 +170,7 @@
 
 
 .stream-item-container {
-  padding-top: 50px;
+  // padding-top: 50px;
 }
 
 
@@ -184,4 +185,8 @@
 
 .tweet-info {
   font-size: 18px;
+}
+
+body {
+  padding-top: 70px;
 }

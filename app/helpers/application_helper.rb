@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-def get_related_url(dialog_id)
+  def get_related_url(dialog_id)
     dialog = Dialog.find(dialog_id)
     artist = dialog.artwork.artist
     related_artists = []
@@ -26,7 +26,7 @@ def get_related_url(dialog_id)
       end
     end
 
-     return artworks_links
+     return artworks_links[0..6]
 
   end
 
