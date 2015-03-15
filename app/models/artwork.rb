@@ -3,6 +3,8 @@ class Artwork < ActiveRecord::Base
 
   has_many :dialogs
 
+  has_and_belongs_to_many :group_shows
+
   has_attached_file :picture,
     styles: { large: "500x500>", medium: "300x300>", thumb: "100x100>" }
 
