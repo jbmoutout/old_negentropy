@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311154943) do
+ActiveRecord::Schema.define(version: 20150316150148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,16 +50,6 @@ ActiveRecord::Schema.define(version: 20150311154943) do
   add_index "artists_galleries", ["artist_id"], name: "index_artists_galleries_on_artist_id", using: :btree
   add_index "artists_galleries", ["gallery_id"], name: "index_artists_galleries_on_gallery_id", using: :btree
 
-  create_table "artwork_group_shows", force: :cascade do |t|
-    t.integer  "artwork_id"
-    t.integer  "group_show_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "artwork_group_shows", ["artwork_id"], name: "index_artwork_group_shows_on_artwork_id", using: :btree
-  add_index "artwork_group_shows", ["group_show_id"], name: "index_artwork_group_shows_on_group_show_id", using: :btree
-
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
     t.integer  "artist_id"
@@ -75,6 +65,13 @@ ActiveRecord::Schema.define(version: 20150311154943) do
   end
 
   add_index "artworks", ["artist_id"], name: "index_artworks_on_artist_id", using: :btree
+
+  create_table "artworks_groupshows", id: false, force: :cascade do |t|
+    t.integer "artwork_id",   null: false
+    t.integer "groupshow_id", null: false
+  end
+
+  add_index "artworks_groupshows", ["artwork_id", "groupshow_id"], name: "index_artworks_groupshows_on_artwork_id_and_groupshow_id", using: :btree
 
   create_table "collections", force: :cascade do |t|
     t.integer  "user_id"
@@ -106,7 +103,7 @@ ActiveRecord::Schema.define(version: 20150311154943) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "group_shows", force: :cascade do |t|
+  create_table "groupshows", force: :cascade do |t|
     t.string   "name"
     t.integer  "gallery_id"
     t.integer  "institution_id"
@@ -114,8 +111,8 @@ ActiveRecord::Schema.define(version: 20150311154943) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "group_shows", ["gallery_id"], name: "index_group_shows_on_gallery_id", using: :btree
-  add_index "group_shows", ["institution_id"], name: "index_group_shows_on_institution_id", using: :btree
+  add_index "groupshows", ["gallery_id"], name: "index_groupshows_on_gallery_id", using: :btree
+  add_index "groupshows", ["institution_id"], name: "index_groupshows_on_institution_id", using: :btree
 
   create_table "institutions", force: :cascade do |t|
     t.string   "name"
@@ -164,10 +161,8 @@ ActiveRecord::Schema.define(version: 20150311154943) do
 
   add_foreign_key "artists_galleries", "artists"
   add_foreign_key "artists_galleries", "galleries"
-  add_foreign_key "artwork_group_shows", "artworks"
-  add_foreign_key "artwork_group_shows", "group_shows"
   add_foreign_key "artworks", "artists"
   add_foreign_key "dialogs", "artworks"
-  add_foreign_key "group_shows", "galleries"
-  add_foreign_key "group_shows", "institutions"
+  add_foreign_key "groupshows", "galleries"
+  add_foreign_key "groupshows", "institutions"
 end

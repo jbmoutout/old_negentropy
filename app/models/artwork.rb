@@ -5,7 +5,7 @@ class Artwork < ActiveRecord::Base
 
   has_many :dialogs
 
-  has_and_belongs_to_many :group_shows
+  has_and_belongs_to_many :groupshows
 
   has_attached_file :picture,
     styles: { large: "500x500>", medium: "300x300>", thumb: "100x100>" }
@@ -53,26 +53,37 @@ class Artwork < ActiveRecord::Base
 
       response_hash = JSON.parse(response.body)
 
-      response_hash['results']['collection1'].each do |artist|
-
-        artist_name = artist['artist_name']
-
-        temp = artist_name.dup
-        artist_name.clear
-        artist_name << temp.split.map(&:capitalize!).join(' ')
-
-        artist      = Artist.where(name: artist_name).first_or_create!
-      end
+      gs_name = response_hash["gs_name"]
 
       response_hash['results']['collection1'].each do |artwork|
 
+        artist_name = artwork["artist_name"]
+
+
         name = artwork['title']
+        #TEMP
         puts "#{name} date?"
         date = gets.chomp
+        #TEMP
         puts "#{name} picture_url?"
         picture_url = gets.chomp
 
-      end
+        groupshow   = Groupshow.where(gs_name: gs_name).first_or_create!
+
+        artist      = Artist.where(name: artist_name).first_or_create!
+
+        artwork     = Artwork.where(artist: artist, name: name, date: date, picture_url: picture_url).first_or_create!
+
+
+
+
+        unless artwork.artist.where(id: artist.id).exists?
+          artwork.artist << artist
+        end
+
+       end
+
+
     end
 
 
