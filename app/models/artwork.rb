@@ -53,7 +53,7 @@ class Artwork < ActiveRecord::Base
 
       response_hash = JSON.parse(response.body)
 
-      gs_name = response_hash["gs_name"]
+      gs_name = response_hash["name"]
 
       response_hash['results']['collection1'].each do |artwork|
 
@@ -68,18 +68,15 @@ class Artwork < ActiveRecord::Base
         puts "#{name} picture_url?"
         picture_url = gets.chomp
 
-        groupshow   = Groupshow.where(gs_name: gs_name).first_or_create!
+        groupshow   = Groupshow.where(name: gs_name).first_or_create!
 
         artist      = Artist.where(name: artist_name).first_or_create!
 
         artwork     = Artwork.where(artist: artist, name: name, date: date, picture_url: picture_url).first_or_create!
 
 
+##################### => MISSING LINK BETWEEN ARTWORK AND GROUPSHOW
 
-
-        unless artwork.artist.where(id: artist.id).exists?
-          artwork.artist << artist
-        end
 
        end
 
