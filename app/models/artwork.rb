@@ -33,8 +33,9 @@ class Artwork < ActiveRecord::Base
       name &&= name[0]
       date = dialog.text.match(/\d{2,4}/)
       date &&= date[0].to_i
+      picture_url = dialog.img_url
 
-      artwork = Artwork.where(artist: artist, name: name).first_or_create! do |artwork|
+      artwork = Artwork.where(artist: artist, name: name, picture_url: picture_url).first_or_create! do |artwork|
         artwork.date = date
       end
 
