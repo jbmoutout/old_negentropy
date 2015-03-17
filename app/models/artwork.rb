@@ -25,7 +25,7 @@ class Artwork < ActiveRecord::Base
   def self.save_tweets(dialog)
     if dialog.text != nil
       artist_name = dialog.text.match(/(?<=: )(.*?),/)
-      artist_name.split.map(&:capitalize).join(' ')
+      # artist_name.split.map(&:capitalize).join(' ')
       artist_name &&= artist_name[1]
       artist = Artist.where(name: artist_name).first_or_create!
 
@@ -35,8 +35,9 @@ class Artwork < ActiveRecord::Base
       date &&= date[0].to_i
       picture_url = dialog.img_url
 
-      artwork = Artwork.where(artist: artist, name: name, picture_url: picture_url).first_or_create! do |artwork|
+      artwork = Artwork.where(artist: artist, name: name).first_or_create! do |artwork|
         artwork.date = date
+        artwork.picture_url = picture_url
       end
 
 
