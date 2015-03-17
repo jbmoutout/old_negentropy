@@ -1,4 +1,4 @@
-class GroupShow < ActiveRecord::Base
+class Groupshow < ActiveRecord::Base
   belongs_to :gallery
   belongs_to :institution
   has_and_belongs_to_many :artworks
