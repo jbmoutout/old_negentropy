@@ -6,7 +6,7 @@
 //= require_tree ./app
 //= require headroom.js
 
-// Please put any code in here. Do not create a new .js file in
+// Please do not put any code in here. Create a new .js file in
 // app/assets/javascripts/app instead, and put your code there
 
  var display_backtotop = 800; // Scrolled pixels from top until the link appears
@@ -42,4 +42,5 @@ $(document).ready(function() {
     e.preventDefault();
   });
 });
+
 

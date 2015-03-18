@@ -344,6 +344,7 @@ GEM
       httparty
       i18n
       thor
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -386,3 +387,4 @@ DEPENDENCIES
   twitter
   uglifier
   wikidata
+  will_paginate

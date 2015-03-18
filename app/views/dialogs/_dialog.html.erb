@@ -1,0 +1,56 @@
+<div class="container">
+     <div class="row">
+       <div class="col-xs-12">
+         <% @dialogs.each do |d| %>
+           <div class="stream-item-container border-bot">
+             <div class="row" id="origin_tweet_box">
+               <div class="col-xs-6" id="">
+                 <img src="<%= d.origin_profilpic_url %>" class="img img-origin-tweet" id="img-tweetos" >
+                 <p class="tweet-profil"><strong><%= d.origin_user %></strong><br>
+                   @<%= d.origin_screen_name %>
+                   <% if d.origin_date != nil %>
+                     • <%= d.origin_date.to_date %></p>
+                   <% end %>
+
+                 <p class="tweet-info"><%= d.origin_text.gsub(/(?:f|ht)tps?:\/[^\s]+/, '') %></p>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-xs-6">
+                 <div class="img-tweet-box">
+                   <div class="overlay"></div>
+                     <%= link_to "+", dialog_add_path(:dialog_id => d.id), method: :put, class: "button" %>
+                   <img src="<%= d.artwork.picture_url %>" class="img img-tweet">
+                 </div>
+                 <div class="col-xs-12 col-sm-10">
+                   <p>
+                     <%= link_to d.artwork.artist.name, artist_path(d.artwork.artist_id) %>,
+                     <%= d.artwork.name %>,
+                     <%= d.artwork.date %>
+                   </p>
+                 </div>
+               </div>
+               <% unless get_related_url(d.id).empty? %>
+                 <div class="suite">
+                   <p>suite de l'exposition:</p>
+                 </div>
+               <% end %>
+               <section id="cards">
+                 <% related_dialogs = get_related_url(d.id) %>
+                 <% related_dialogs.each do |dialog| %>
+                   <% unless dialog.img_url == d.img_url  %>
+                   <%= link_to artist_path(dialog.artwork.artist_id) do %>
+
+                     <%= image_tag dialog.img_url %>
+                   <% end %>
+
+                   <% end %>
+                 <% end %>
+
+               </section>
+             </div>
+           </div>
+         <% end %>
+       </div>
+     </div>
+   </div>
