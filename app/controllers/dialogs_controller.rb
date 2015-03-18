@@ -3,7 +3,11 @@ class DialogsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @dialogs = policy_scope(Dialog).order("origin_date DESC").includes(:artwork)
+    @dialogs = policy_scope(Dialog)
+    @dialogs = Dialog.order('origin_date DESC').page(params[:page])
+
+    #@dialogs = Dialog.paginate(:page => params[:page]).order('origin_date DESC')
+
     @artists = Artist.all
   end
 

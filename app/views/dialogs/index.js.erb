@@ -1,0 +1,2 @@
+$('#dialogs').append('<%= j render "dialog" %>');
+$('.pagination').replaceWith('<%= j will_paginate(@dialogs) %>');
