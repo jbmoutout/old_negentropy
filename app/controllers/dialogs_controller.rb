@@ -1,14 +1,11 @@
-require 'will_paginate/array'
-
 class DialogsController < ApplicationController
   skip_after_action :verify_authorized, only: :collection
   skip_before_action :authenticate_user!
 
   def index
     @dialogs = policy_scope(Dialog)
-    @dialogs = @dialogs.order('origin_date DESC').includes(:artwork).page(params[:page])
-
-    #@dialogs = policy_scope(Dialog).order("origin_date DESC").includes(:artwork)
+    @dialogs = Dialog.order('origin_date DESC').includes(:artwork)
+    #@dialogs = Dialog.order('origin_date DESC').includes(:artwork).page(params[:page])
 
 
     @artists = Artist.all
