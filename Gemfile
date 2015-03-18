@@ -18,7 +18,7 @@ gem "paperclip"
 gem "aws-sdk"
 gem 'rest-client', '~> 1.7.3'
 gem 'wikidata'
-gem 'will_paginate', '~> 3.0.6'
+
 
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'rails-assets-headroom.js'
@@ -32,6 +32,8 @@ gem "algoliasearch-rails"
 gem "rails-i18n"
 gem "devise-i18n"
 gem "devise-i18n-views"
+
+gem 'will_paginate', '~> 3.0.6'
 
 group :development, :test do
   gem "spring"
