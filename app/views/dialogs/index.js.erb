@@ -1,2 +1,7 @@
 $('#dialogs').append('<%= j render "dialog" %>');
+<% if @dialogs.next_page %>
 $('.pagination').replaceWith('<%= j will_paginate(@dialogs) %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
