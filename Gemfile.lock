@@ -387,4 +387,4 @@ DEPENDENCIES
   twitter
   uglifier
   wikidata
-  will_paginate
+  will_paginate (~> 3.0.6)
