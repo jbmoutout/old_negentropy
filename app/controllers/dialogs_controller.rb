@@ -4,9 +4,10 @@ class DialogsController < ApplicationController
 
   def index
     @dialogs = policy_scope(Dialog)
-    @dialogs = Dialog.order('origin_date DESC').page(params[:page])
+    @dialogs = Dialog.order('origin_date DESC')
 
-    #@dialogs = Dialog.paginate(:page => params[:page]).order('origin_date DESC')
+    #@dialogs = policy_scope(Dialog).order("origin_date DESC").includes(:artwork)
+
 
     @artists = Artist.all
   end
