@@ -1,7 +1,8 @@
 <div id="dialogs">
   <div class="scroll-top">Back to top</div>
-  <%  %>
+  <% cache("dialog") do  %>
     <%= render "dialog" %>
+  <% end %>
 </div>
 
 <%= will_paginate @dialogs %>
