@@ -4,7 +4,9 @@ class DialogsController < ApplicationController
 
   def index
     @dialogs = policy_scope(Dialog)
+    #Working on Heroku (without pagination) :
     @dialogs = Dialog.order('origin_date DESC').includes(:artwork)
+    #Need to be fixed (working on local, not on Heroku) :
     #@dialogs = Dialog.order('origin_date DESC').includes(:artwork).page(params[:page])
 
 
