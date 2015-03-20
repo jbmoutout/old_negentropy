@@ -2,7 +2,7 @@ require 'rest_client'
 
 class Gallery < ActiveRecord::Base
   has_and_belongs_to_many :artists
-  has_many :group_shows
+  has_many :groupshows
 
   #################################################################################
   ##IN RAILS C: REPLACE uri WITH THE PROPER KIMONO API GALLERY URL ' ' INLCUDED ##
