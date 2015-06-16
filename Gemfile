@@ -13,6 +13,7 @@ gem "devise"
 gem "twitter"
 gem "omniauth-twitter"
 gem 'omniauth-facebook'
+gem "omniauth-instagram"
 gem "pundit"
 gem "paperclip"
 gem "aws-sdk"
