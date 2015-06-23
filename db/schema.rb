@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316150148) do
+ActiveRecord::Schema.define(version: 20150618114853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,18 @@ ActiveRecord::Schema.define(version: 20150316150148) do
 
   add_index "groupshows", ["gallery_id"], name: "index_groupshows_on_gallery_id", using: :btree
   add_index "groupshows", ["institution_id"], name: "index_groupshows_on_institution_id", using: :btree
+
+  create_table "insta", force: :cascade do |t|
+    t.string   "ig_username"
+    t.string   "ig_fullname"
+    t.string   "ig_text"
+    t.date     "date"
+    t.string   "ig_img_url"
+    t.string   "ig_user_profilpic_url"
+    t.string   "ig_location"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "institutions", force: :cascade do |t|
     t.string   "name"
