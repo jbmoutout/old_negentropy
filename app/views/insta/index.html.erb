@@ -1,0 +1,10 @@
+<div id="dialogs">
+  <div class="scroll-top">Back to top</div>
+  <% cache("instum") do  %>
+    <%= render "instum" %>
+  <% end %>
+</div>
+
+<% unless @insta.empty? %>
+  <%= will_paginate @insta %>
+<% end %>

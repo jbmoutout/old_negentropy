@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :users
   resources :artworks
   resources :artists, only: [:index, :show]
+  resources :insta
 
   get "/collection", to: "dialogs#collection"
 
