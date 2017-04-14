@@ -3,7 +3,7 @@ require 'json'
 
 class Instum < ActiveRecord::Base
 
-
+  scope :artist, -> (ig_text) { Artist.where("name LIKE ?", "%ig_text%") }
 
 
 def self.save_data_from_instagram

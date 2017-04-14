@@ -11,30 +11,35 @@
                    <% if i.date != nil %>
                      • <%= i.date %></p>
                    <% end %>
-                  <img src="<%= i.ig_img_url %>">
+                  <img src="<%= i.ig_img_url %>" class="img img-tweet">
                   <div><%= i.ig_text %></div>
                 </div>
               </div>
             </div>
 
-        </div>
-      </div>
-       <% unless get_related_url(i.id).empty? %>
+       <!--  </div> -->
+<!--       </div> -->
+       <% if get_related_url(i.id).nil? %>
                  <div class="suite">
+                   <p>[Empty Art Graph]</p>
+                 </div>
+        <% else  %>
+                <div class="suite">
                    <p>suite de l'exposition:</p>
                  </div>
-               <% end %>
-               <section id="cards">
-                 <% related_dialogs = get_related_url(i.id) %>
-                 <% related_dialogs.each do |dialog| %>
-                   <% unless dialog.img_url == d.img_url  %>
-                   <%= link_to artist_path(dialog.artwork.artist_id) do %>
 
-                     <%= image_tag dialog.img_url %>
-                   <% end %>
+               <section id="cards">
+                 <% related_art = get_related_url(i.id) %>
+                 <% related_art.each do |art| %>
+                  <%= art.name %>
+                  <!--  <% unless art.img_url == i.img_url  %>
+                   <%= link_to artist_path(art.artwork.artist_id) do %>
+
+                     <%= image_tag art.img_url %>
+                   <% end %> -->
 
                    <% end %>
                  <% end %>
                   <% end %>
-
+        <% end %>
                </section>

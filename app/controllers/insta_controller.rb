@@ -4,7 +4,8 @@ class InstaController < ApplicationController
 
   def index
     @insta = policy_scope(Instum)
-    @insta = Instum.order('created_at DESC').page(params[:page])
+    @insta = @insta.artist(params[:artist]) if params[:artist].present?
+    @insta = Instum.page(params[:page]).order('created_at DESC')
 
     @artists = Artist.all
   end
